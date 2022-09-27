@@ -42,7 +42,7 @@ class User extends BaseController {
                 'username'  => [
                     'rules'  => 'required|is_unique[user.username]',
                     'errors' => [
-                        'is_unique' => 'Username sudah terdaftar.'
+                        'is_unique' => 'Username telah digunakan.'
                     ]
                 ],
                 'password' => [
@@ -54,7 +54,7 @@ class User extends BaseController {
                 'password2' => [
                     'rules' => 'required|matches[password]',
                     'errors' => [
-                        'matches' => 'Password tidak sama'
+                        'matches' => 'Password tidak sama.'
                     ]
                 ]
             ];
@@ -91,7 +91,7 @@ class User extends BaseController {
                 'username'  => [
                     'rules'  => 'is_unique[user.username]',
                     'errors' => [
-                        'is_unique' => 'Username sudah terdaftar.'
+                        'is_unique' => 'Username telah digunakan.'
                     ]
                 ],
                 // 'password' => [

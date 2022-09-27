@@ -17,8 +17,8 @@
                         <label class="form-label">Jabatan</label>
                         <select class="form-control" name="jabatan" id="" required>
                             <option value="">Pilih Jabatan</option>
-                            <option value="admin">Admin</option>
-                            <option value="kepalasekolah">Kepala Sekolah</option>
+                            <option value="Admin">Admin</option>
+                            <option value="Kepala Sekolah">Kepala Sekolah</option>
                         </select>
                     </div>
 

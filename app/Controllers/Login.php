@@ -10,6 +10,8 @@ use CodeIgniter\I18n\Time;
 class Login extends BaseController {
     use ResponseTrait;
     public function index() {
+        if (session()->get('isLogin')) return redirect()->to('/');
+
         if ($this->request->getPost()) {
             return $this->login();
         }
@@ -21,6 +23,7 @@ class Login extends BaseController {
     }
 
     private function login() {
+
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('pass');
 
@@ -47,7 +50,7 @@ class Login extends BaseController {
                 'isLogin' => true,
                 'id'      => $data['id'],
                 'username' => $data['username'],
-                'nama_user' => $data['nama_user'],
+                'namaUser' => $data['nama_user'],
                 'jabatan'   => $data['jabatan'],
             ];
 

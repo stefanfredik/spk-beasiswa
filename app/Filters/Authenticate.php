@@ -6,6 +6,7 @@ use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 
+
 class Authenticate implements FilterInterface {
     /**
      * Do whatever processing this filter needs to do.
@@ -23,8 +24,9 @@ class Authenticate implements FilterInterface {
      * @return mixed
      */
     public function before(RequestInterface $request, $arguments = null) {
-        if ($this->session->get('is_login')) {
-            return 'login dulu';
+        // $session = \Config\Services::session();
+        if (!session()->get('isLogin')) {
+            return redirect()->to('/login');
         }
     }
 

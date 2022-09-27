@@ -16,8 +16,8 @@
                         <label class="form-label">Jabatan</label>
                         <select class="form-control" name="jabatan" id="" required>
                             <option value="">Pilih Jabatan</option>
-                            <option <?= $user['jabatan'] === 'admin' ? 'selected' : ''; ?> value="admin">Admin</option>
-                            <option <?= $user['jabatan'] === 'kepalasekolah' ? 'selected' : ''; ?> value="kepalasekolah">Kepala Sekolah</option>
+                            <option <?= $user['jabatan'] === 'Admin' ? 'selected' : ''; ?> value="Admin">Admin</option>
+                            <option <?= $user['jabatan'] === 'Kepala Sekolah' ? 'selected' : ''; ?> value="Kepala Sekolah">Kepala Sekolah</option>
                         </select>
                     </div>
 
