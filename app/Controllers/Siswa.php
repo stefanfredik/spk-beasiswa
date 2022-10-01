@@ -47,6 +47,25 @@ class Siswa extends BaseController {
 
     public function save($id = null) {
         if ($id == null) {
+            $rules = [
+                'nisn'  => [
+                    'rules'  => 'required|is_unique[siswa.nisn]',
+                    'errors' => [
+                        'is_unique' => 'Nisn telah digunakan.'
+                    ]
+                ],
+            ];
+
+            if (!$this->validate($rules)) {
+
+                $res = [
+                    'status' => 'error',
+                    'error' => $this->validation->getErrors()
+                ];
+
+                return $this->respond($res);
+            }
+
             $data = $this->request->getPost();
             $this->SiswaModel->save($data);
 

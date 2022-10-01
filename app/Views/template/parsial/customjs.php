@@ -28,7 +28,7 @@
                     getTable(baseUrl);
                 } else {
                     validation(res.data.error);
-                    console.log(res.data.error);
+                    console.log(res.data);
                     return;
                 }
 

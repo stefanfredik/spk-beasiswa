@@ -4,10 +4,14 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
-class Laporan extends BaseController
-{
-    public function index()
-    {
-        //
+class Laporan extends BaseController {
+    public function index() {
+        $data = [
+            'title' => "Laporan",
+            'url'       => [
+                'parent'    => 'Laporan'
+            ]
+        ];
+        return view('/laporan/index', $data);
     }
 }

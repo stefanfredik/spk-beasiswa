@@ -3,11 +3,34 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\PesertaModel;
 
-class Keputusan extends BaseController
-{
-    public function index()
-    {
-        //
+class Keputusan extends BaseController {
+    public function __construct() {
+        $this->pesertaModel = new PesertaModel();
+        $this->point = 'peserta';
+    }
+    public function index() {
+        $data = [
+            'title' => "Keputusan",
+            'url'       => [
+                'parent'    => 'keputusan'
+            ]
+        ];
+        return view('/keputusan/index', $data);
+    }
+
+    public function table() {
+        // dd($this->pesertaModel->findAllPeserta());
+
+        $data = [
+            'title' => 'Data Keputusan',
+            'dataPeserta' => $this->pesertaModel->findAllPeserta(),
+            'url'       => [
+                'parent'    => $this->point
+            ]
+        ];
+
+        return view('/peserta/table', $data);
     }
 }

@@ -21,7 +21,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Data
+        Master Data
     </div>
 
     <li class="nav-item <?= @$url['parent'] == 'user' ? 'active' : ''; ?>">
@@ -42,20 +42,29 @@
             <span>Data Kriteria</span></a>
     </li>
 
+
+    <hr class="sidebar-divider">
+
+    <li class="nav-item <?= @$url['parent'] == 'peserta' ? 'active' : ''; ?>">
+        <a class="nav-link" href="/peserta">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Data Peserta</span></a>
+    </li>
+
     <li class="nav-item <?= $url['parent'] == 'nilai' ? 'active' : ''; ?>">
         <a class="nav-link" href="/nilai">
             <i class="bi bi-card-checklist"></i>
             <span>Pilihan Nilai</span></a>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="/keputusan">
+    <li class="nav-item <?= @$url['parent'] == 'keputusan' ? 'active' : ''; ?>">
+        <a class="nav-link " href="/keputusan">
             <i class="bi bi-shield-check"></i>
             <span>Data Keputusan</span></a>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="/laporan">
+    <li class="nav-item <?= @$url['parent'] == 'laporan' ? 'active' : ''; ?>">
+        <a class="nav-link " href="/laporan">
             <i class="bi bi-table"></i>
             <span>Data Laporan</span></a>
     </li>

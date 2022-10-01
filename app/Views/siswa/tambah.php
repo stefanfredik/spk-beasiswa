@@ -10,6 +10,7 @@
                     <div class="mb-3">
                         <label class="form-label">Nisn</label>
                         <input name="nisn" type="text" class="form-control" required>
+                        <div id="" class="invalid-feedback"></div>
                     </div>
 
                     <div class="mb-3">
