@@ -19,7 +19,6 @@ function bobotPenghasilan($p): int {
     }
 }
 
-
 function bobotNilai($n): int {
     if ($n > 90) {
         return 5;

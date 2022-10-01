@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 27 Sep 2022 pada 12.21
+-- Waktu pembuatan: 01 Okt 2022 pada 12.36
 -- Versi server: 10.6.7-MariaDB-2ubuntu1.1
 -- Versi PHP: 8.1.2
 
@@ -41,8 +41,8 @@ CREATE TABLE `kriteria` (
 INSERT INTO `kriteria` (`id`, `kriteria`, `bobot`, `keterangan`) VALUES
 (2, 'Penghasilan Orang Tua', 5, 'C1'),
 (3, 'Jumlah Tanggungan', 1, 'C2'),
-(4, 'Nilai Raport', 2, 'C5'),
-(10, 'Penghasilan Orang Tua', 123, 'C1');
+(10, 'Penghasilan Orang Tua', 3, 'C3'),
+(11, 'Yatim Piatu', 5, 'C4');
 
 -- --------------------------------------------------------
 
@@ -68,7 +68,32 @@ INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`
 (10, '2022-09-07-023402', 'App\\Database\\Migrations\\UserMigration', 'default', 'App', 1662697145, 1),
 (11, '2022-09-07-024337', 'App\\Database\\Migrations\\SiswaMigration', 'default', 'App', 1662697145, 1),
 (12, '2022-09-09-041210', 'App\\Database\\Migrations\\UserMigration', 'default', 'App', 1662697163, 2),
-(13, '2022-09-09-102437', 'App\\Database\\Migrations\\Kriteria', 'default', 'App', 1662721791, 3);
+(13, '2022-09-09-102437', 'App\\Database\\Migrations\\Kriteria', 'default', 'App', 1662721791, 3),
+(14, '2022-09-29-135140', 'App\\Database\\Migrations\\PesertaMigration', 'default', 'App', 1664529786, 4),
+(15, '2022-09-29-153408', 'App\\Database\\Migrations\\NilaiMigration', 'default', 'App', 1664529786, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `peserta`
+--
+
+CREATE TABLE `peserta` (
+  `id` int(11) NOT NULL,
+  `nisn` int(32) NOT NULL,
+  `penghasilan` float NOT NULL,
+  `tanggungan` int(11) NOT NULL,
+  `nilai` float NOT NULL,
+  `yatimpiatu` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data untuk tabel `peserta`
+--
+
+INSERT INTO `peserta` (`id`, `nisn`, `penghasilan`, `tanggungan`, `nilai`, `yatimpiatu`) VALUES
+(16, 123456, 100000, 3, 90, 'Yatim'),
+(17, 12345678, 2500000, 4, 100, 'Yatim Piatu');
 
 -- --------------------------------------------------------
 
@@ -90,8 +115,7 @@ CREATE TABLE `siswa` (
 
 INSERT INTO `siswa` (`id`, `nisn`, `nama_siswa`, `jenis_kelamin`, `alamat`) VALUES
 (2, '123456', 'Fredik Stefan', 'laki-laki', 'Nusa Dua, Bali'),
-(3, '12345678', 'Angel', 'perempuan', 'Labuan Bajo'),
-(5, '12345678', 'Joni Agung', 'laki-laki', 'Bali, Indonesia');
+(16, '12345678', 'Ardina Princessa', 'laki-laki', 'Labuan Bajo');
 
 -- --------------------------------------------------------
 
@@ -114,8 +138,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `nama_user`, `jabatan`, `username`, `password`, `last_login`) VALUES
 (30, 'Coba Saja', 'Kepala Sekolah', 'user', '$2y$10$aWYsFysjKY3zeT/afT6QeO0VO.OMkcHLZmzbxunzRSqF4fpJ8u0dq', '2022-09-09 08:47:53'),
-(31, 'Fredik Stefan', 'Admin', 'admin', '$2y$10$KmFocfv62tAnubLGioCOWOOlKuKZCiXyzalK9CLnLAfGswGOW1bPi', '2022-09-26 22:48:05'),
-(32, 'Coba Lagi', 'Admin', 'admin123', '$2y$10$l2n4Anu4inF6t0C2rEfUTuaVf1T8Co1WVk1LIGLQNf9xIV867jZ8.', '0000-00-00 00:00:00');
+(31, 'Fredik Stefan', 'Admin', 'admin', '$2y$10$KmFocfv62tAnubLGioCOWOOlKuKZCiXyzalK9CLnLAfGswGOW1bPi', '2022-09-30 20:20:54'),
+(34, 'asdasd', 'Admin', 'stefan', '$2y$10$j14NOr/zfhLgY8o/8DehKOUgtKCecmL/0p0jomaRyv9YoDQyCYWj2', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -131,6 +155,12 @@ ALTER TABLE `kriteria`
 -- Indeks untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `peserta`
+--
+ALTER TABLE `peserta`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -153,25 +183,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `kriteria`
 --
 ALTER TABLE `kriteria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT untuk tabel `peserta`
+--
+ALTER TABLE `peserta`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `siswa`
 --
 ALTER TABLE `siswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
