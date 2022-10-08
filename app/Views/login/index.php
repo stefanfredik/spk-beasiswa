@@ -61,7 +61,7 @@
     <script src="/sb/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/sb/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="/sb/js/sb-admin-2.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/assets/sweetalert2/dist/sweetalert2.all.js"></script>
     <script>
         function login(target) {
             target.preventDefault();

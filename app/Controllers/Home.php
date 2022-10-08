@@ -2,10 +2,19 @@
 
 namespace App\Controllers;
 
+use App\Models\PesertaModel;
+use App\Models\SiswaModel;
+
 class Home extends BaseController {
+    public function __construct() {
+        $this->siswaModel = new SiswaModel();
+        $this->pesertaModel = new PesertaModel();
+    }
     public function index() {
         $data = [
-            'title' => 'Data Siswa',
+            'title' => 'Halaman Utama',
+            'jumlahSiswa' => $this->siswaModel->countAll(),
+            'jumlahPeserta' => $this->pesertaModel->countAll(),
             'url'   => [
                 'parent' => 'home'
             ]

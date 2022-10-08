@@ -42,6 +42,12 @@
             <span>Data Kriteria</span></a>
     </li>
 
+    <li class="nav-item <?= @$url['parent'] == 'subkriteria' ? 'active' : ''; ?>">
+        <a class="nav-link" href="/subkriteria">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Data Sub Kriteria</span></a>
+    </li>
+
 
     <hr class="sidebar-divider">
 

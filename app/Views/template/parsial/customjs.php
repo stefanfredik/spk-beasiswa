@@ -104,7 +104,25 @@
     async function getTable(url) {
         $.get(url + "/table", function(data, status) {
             $('#data').html(data);
-            $(`#${url}`).DataTable();
+            $(`#${url}`).DataTable({
+                columnDefs: [{
+                    width: 20,
+                    targets: 0
+                }],
+                "language": {
+                    "paginate": {
+                        "first": "Awal",
+                        "last": "Akhir",
+                        "next": '<i class="bi bi-arrow-right-circle"></i>',
+                        "previous": '<i class="bi bi-arrow-left-circle"></i>'
+                    },
+                    "zeroRecords": "Data tidak ditemukan.",
+                    "search": "Cari:",
+                    "lengthMenu": "Tampil _MENU_ kolom",
+                    "info": "Kolom _START_ sampai _END_ dari _TOTAL_ kolom",
+                }
+                // fixedColumns: false
+            });
         });
     }
 </script>
