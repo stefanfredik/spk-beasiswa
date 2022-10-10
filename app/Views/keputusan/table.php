@@ -23,9 +23,10 @@
             </tr>
         </thead>
         <tbody>
-
             <?php
+
             $no = 1;
+
             foreach ($dataPeserta as $dt) : ?>
                 <tr>
                     <td><?= $no++; ?></td>
@@ -45,7 +46,9 @@
                         <a onclick="hapus(event,this)" class="btn btn-outline-danger " href="/<?= $url['parent']; ?>/delete/<?= $dt['id']; ?>"><i class="bi bi-trash"></i></a>
                     </td>
                 </tr>
+
             <?php endforeach; ?>
+
         </tbody>
     </table>
 </div>

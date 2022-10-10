@@ -5,7 +5,7 @@
                 <h5 class="modal-title" id="modalLabel"><?= $title; ?></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="" method="" id="formTambah" onsubmit="simpanData(event,<?= $kriteria['id']; ?>)">
+            <form action="" method="" id="formTambah" onsubmit="simpanData(event,<?= $subkriteria['id']; ?>)">
                 <div class="modal-body">
 
                     <div class="mb-3">

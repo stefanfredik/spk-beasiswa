@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\KriteriaModel;
 use App\Models\PesertaModel;
 use App\Models\SiswaModel;
+use App\Models\SubkriteriaModel;
 use CodeIgniter\API\ResponseTrait;
 use CodeIgniter\Config\Config;
 use Config\Database;
@@ -17,8 +18,10 @@ class Peserta extends BaseController {
         $this->point = 'peserta';
         $this->siswaModel = new SiswaModel();
         $this->kriteriaModel = new KriteriaModel();
+        $this->subkriteriaModel = new SubkriteriaModel();
     }
     public function index() {
+        // dd($this->subkriteriaModel->findAllSubkriteria());
         $data = [
             'title' => 'Data Peserta',
             'url'   => [
@@ -30,7 +33,10 @@ class Peserta extends BaseController {
     }
 
     public function table() {
-        // dd($this->pesertaModel->findAllPeserta());
+
+        // foreach ($this->pesertaModel->findAllPeserta() as $dt) {
+
+        // }
 
         $data = [
             'title' => 'Tambah Data Peserta',
@@ -47,7 +53,8 @@ class Peserta extends BaseController {
     public function tambah() {
         $data = [
             'title' => "Data Peserta",
-            'siswa' => $this->siswaModel->findAll()
+            'siswa' => $this->siswaModel->findAll(),
+            'subkriteria' => $this->subkriteriaModel->findAllSubkriteria()
         ];
 
         return view('/peserta/tambah', $data);
@@ -57,6 +64,7 @@ class Peserta extends BaseController {
         // dd($this->pesertaModel->findPeserta($id));
         $data = [
             "title" => "Edit Data Peserta",
+            'siswa' => $this->siswaModel->findAll(),
             "peserta" => $this->pesertaModel->findPeserta($id)
         ];
 
@@ -70,7 +78,7 @@ class Peserta extends BaseController {
                 'nisn'  => [
                     'rules'  => 'required|is_unique[peserta.nisn]',
                     'errors' => [
-                        'is_unique' => 'Siswa yang anda pilih telah jadi peserta.'
+                        'is_unique' => 'Siswa peserta telah direkam.'
                     ]
                 ],
             ];
@@ -103,5 +111,16 @@ class Peserta extends BaseController {
 
             return $this->respond($res, 200);
         }
+    }
+
+    public function delete($id) {
+        $this->pesertaModel->delete($id);
+
+        $res = [
+            'status'    => 'success',
+            'msg'     => 'Berhasil menghapus Data.',
+        ];
+
+        return $this->respond($res, 200);
     }
 }

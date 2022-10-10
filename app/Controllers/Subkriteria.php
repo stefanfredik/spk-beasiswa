@@ -85,4 +85,14 @@ class Subkriteria extends BaseController {
 
         return $this->respond($res, 200);
     }
+
+    public function get($id) {
+        $data = [
+            "title" => "Edit Data Subkriteria",
+            "subkriteria" => $this->subkriteriaModel->find($id),
+            // "allkriteria" => $this->subkriteriaModel->findAllSubkriteria()
+        ];
+
+        return view("/subkriteria/edit", $data);
+    }
 }

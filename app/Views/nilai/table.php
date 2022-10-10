@@ -1,29 +1,70 @@
+<?php
+
+$allC1 = array();
+$allC2 = array();
+$allC3 = array();
+$allC4 = array();
+
+foreach ($dataPeserta as $dt) {
+    array_push($allC1, bobotPenghasilan($dt['penghasilan']));
+    array_push($allC2, bobotTanggungan($dt['tanggungan']));
+    array_push($allC4, bobotNilai($dt['nilai']));
+    array_push($allC3, bobotYatim($dt['yatimpiatu']));
+}
+?>
+
 <div class="table-responsive align-middle">
     <table class="table border table-bordered table-striped table-hover" id="<?= $url['parent']; ?>" width="100%" colspacing="0">
         <thead class="table-light">
             <tr>
                 <th>No</th>
                 <th>Siswa</th>
-                <?php
-                foreach ($kriteria as $dt) : ?>
-                    <th><?= $dt['keterangan'] ?></th>
-                <?php endforeach; ?>
-                <th>Total Bobot</th>
+                <th>Nisn</th>
+                <th>Nilai</th>
+                <!-- <th>Status</th> -->
             </tr>
         </thead>
         <tbody>
             <?php
-            // helper('bobot');
+
             $no = 1;
             foreach ($dataPeserta as $dt) : ?>
                 <tr>
                     <td><?= $no++; ?></td>
                     <td><?= $dt['nama_siswa']; ?></td>
-                    <td><?= $p = bobotPenghasilan($dt['penghasilan']); ?></td>
-                    <td><?= $n = bobotNilai($dt['nilai']); ?></td>
-                    <td><?= $t = bobotTanggungan($dt['tanggungan']); ?></td>
-                    <td><?= $y = bobotYatim($dt['yatimpiatu']); ?></td>
-                    <td><?= ($p + $n + $t + $y) ?></td>
+                    <td width="100px"><?= $dt['nisn'] ?></td>
+                    <td width="100px">
+                        <?php
+
+                        $nilaiC1 = bobotPenghasilan($dt['penghasilan']);
+                        $nilaiC2 = bobotTanggungan($dt['tanggungan']);
+                        $nilaiC3 = bobotYatim($dt['yatimpiatu']);
+                        $nilaiC4 = bobotNilai($dt['nilai']);
+                        $jumKriteria = 18;
+
+                        $bobotC1 = hitungBobot(5, $jumKriteria);
+                        $bobotC2 = hitungBobot(5, $jumKriteria);
+                        $bobotC3 = hitungBobot(4, $jumKriteria);
+                        $bobotC4 = hitungBobot(4, $jumKriteria);
+
+                        $norC1 = normalisasi($nilaiC1, $allC1);
+                        $opC1 = optimasi($norC1, $bobotC1);
+
+                        $norC2 = normalisasi($nilaiC2, $allC2);
+                        $opC2 = optimasi($norC2, $bobotC2);
+
+                        $norC3 = normalisasi($nilaiC3, $allC3);
+                        $opC3 = optimasi($norC3, $bobotC3);
+
+                        $norC4 = normalisasi($nilaiC4, $allC4);
+                        $opC4 = optimasi($norC4, $bobotC4);
+
+                        $nilaiAkhir = nilaiAkhir([$opC1, $opC2, $opC3, $opC4]);
+                        echo $nilaiAkhir;
+                        ?>
+
+
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

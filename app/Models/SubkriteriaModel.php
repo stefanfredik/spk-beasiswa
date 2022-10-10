@@ -25,4 +25,15 @@ class SubkriteriaModel extends Model {
         $b->orderBy('kriteria.kriteria', 'asc');
         return $b->get()->getResultArray();
     }
+
+    public function findSubkriteria($id) {
+        $db = \Config\Database::connect();
+        $b = $db->table($this->table);
+        $b->select('subkriteria.*');
+        $b->select('kriteria.kriteria');
+        $b->join('kriteria', 'kriteria.id = subkriteria.id_kriteria');
+        $b->where('subkriteria.id');
+        $b->orderBy('kriteria.kriteria', 'asc');
+        return $b->get()->getResultArray();
+    }
 }

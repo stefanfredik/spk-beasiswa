@@ -27,7 +27,7 @@
 
 
                     <div class="mb-3">
-                        <label class="form-label">Nilai</label>
+                        <label class="form-label">Nilai Raport</label>
                         <input name="nilai" type="number" class="form-control" required>
                         <div id="" class="invalid-feedback"></div>
                     </div>

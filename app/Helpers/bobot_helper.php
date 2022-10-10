@@ -1,8 +1,9 @@
 <?php
 
 
+# nilai = bobot/nilai pada kriteria.
 function hitungBobot($nilai, $totalkriteria) {
-    return round(($nilai / $totalkriteria), 2);
+    return number_format(($nilai / $totalkriteria), 2);
 }
 
 function bobotPenghasilan($p): int {
