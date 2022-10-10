@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 01 Okt 2022 pada 12.36
+-- Waktu pembuatan: 10 Okt 2022 pada 12.28
 -- Versi server: 10.6.7-MariaDB-2ubuntu1.1
 -- Versi PHP: 8.1.2
 
@@ -40,9 +40,9 @@ CREATE TABLE `kriteria` (
 
 INSERT INTO `kriteria` (`id`, `kriteria`, `bobot`, `keterangan`) VALUES
 (2, 'Penghasilan Orang Tua', 5, 'C1'),
-(3, 'Jumlah Tanggungan', 1, 'C2'),
-(10, 'Penghasilan Orang Tua', 3, 'C3'),
-(11, 'Yatim Piatu', 5, 'C4');
+(3, 'Jumlah Tanggungan', 5, 'C2'),
+(11, 'Yatim Piatu', 4, 'C3'),
+(12, 'Nilai Raport', 4, 'C4');
 
 -- --------------------------------------------------------
 
@@ -70,7 +70,8 @@ INSERT INTO `migrations` (`id`, `version`, `class`, `group`, `namespace`, `time`
 (12, '2022-09-09-041210', 'App\\Database\\Migrations\\UserMigration', 'default', 'App', 1662697163, 2),
 (13, '2022-09-09-102437', 'App\\Database\\Migrations\\Kriteria', 'default', 'App', 1662721791, 3),
 (14, '2022-09-29-135140', 'App\\Database\\Migrations\\PesertaMigration', 'default', 'App', 1664529786, 4),
-(15, '2022-09-29-153408', 'App\\Database\\Migrations\\NilaiMigration', 'default', 'App', 1664529786, 4);
+(15, '2022-09-29-153408', 'App\\Database\\Migrations\\NilaiMigration', 'default', 'App', 1664529786, 4),
+(16, '2022-10-08-013442', 'App\\Database\\Migrations\\SubkriteriaMigration', 'default', 'App', 1665193293, 5);
 
 -- --------------------------------------------------------
 
@@ -92,8 +93,15 @@ CREATE TABLE `peserta` (
 --
 
 INSERT INTO `peserta` (`id`, `nisn`, `penghasilan`, `tanggungan`, `nilai`, `yatimpiatu`) VALUES
-(16, 123456, 100000, 3, 90, 'Yatim'),
-(17, 12345678, 2500000, 4, 100, 'Yatim Piatu');
+(19, 123456, 900000, 4, 80, 'Lengkap'),
+(20, 12345678, 850000, 3, 84, 'Lengkap'),
+(21, 3, 1000000, 2, 90, 'Yatim'),
+(22, 4, 1200000, 3, 80, 'Piatu'),
+(23, 5, 900000, 5, 91, 'Yatim Piatu'),
+(24, 6, 1500000, 1, 79, 'Lengkap'),
+(25, 7, 1700000, 2, 91, 'Lengkap'),
+(26, 8, 850000, 3, 90, 'Piatu'),
+(27, 9, 2000000, 5, 90, 'Yatim');
 
 -- --------------------------------------------------------
 
@@ -114,8 +122,53 @@ CREATE TABLE `siswa` (
 --
 
 INSERT INTO `siswa` (`id`, `nisn`, `nama_siswa`, `jenis_kelamin`, `alamat`) VALUES
-(2, '123456', 'Fredik Stefan', 'laki-laki', 'Nusa Dua, Bali'),
-(16, '12345678', 'Ardina Princessa', 'laki-laki', 'Labuan Bajo');
+(2, '123456', 'Valensi Cenalia Laju', 'laki-laki', 'Nusa Dua, Bali'),
+(16, '12345678', 'Claudia Arima Jesica', 'laki-laki', 'Labuan Bajo'),
+(17, '0003', 'Filomena Elsaviani', 'perempuan', 'Denpasar'),
+(18, '0004', 'Helena Yusta Sari', 'laki-laki', 'Nusa Dua'),
+(19, '0005', 'Yuliana Gale', 'perempuan', 'Jimbaran'),
+(20, '0006', 'Aleksander Adityo', 'laki-laki', 'Denpasar'),
+(21, '0007', 'Sony Sufani', 'perempuan', 'Denpasar'),
+(22, '008', 'Katarina Lian', 'laki-laki', 'Nusa Dua'),
+(23, '0009', 'Andika Sufani', 'laki-laki', 'Badung');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `subkriteria`
+--
+
+CREATE TABLE `subkriteria` (
+  `id` int(11) NOT NULL,
+  `id_kriteria` int(11) NOT NULL,
+  `subkriteria` varchar(32) NOT NULL,
+  `nilai` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+--
+-- Dumping data untuk tabel `subkriteria`
+--
+
+INSERT INTO `subkriteria` (`id`, `id_kriteria`, `subkriteria`, `nilai`) VALUES
+(13, 2, 'Rp. 800.000 - Rp. 1.200.000', 4),
+(14, 2, '> Rp. 1.200.000 - Rp. 1.800.000', 3),
+(15, 2, '> Rp. 1.800.000 - Rp. 2.500.000', 2),
+(16, 2, '< Rp. 800.000', 5),
+(17, 2, '> Rp. 2.500.000', 1),
+(19, 3, '4 Anak', 4),
+(20, 3, '5 Anak', 5),
+(21, 3, '3 Anak', 3),
+(22, 3, '2 Anak', 2),
+(23, 3, '1 Anak', 1),
+(24, 11, 'Lengkap', 1),
+(25, 11, 'Yatim Piatu', 5),
+(26, 11, 'Yatim', 4),
+(27, 11, 'Piatu', 3),
+(29, 12, '> 90', 5),
+(30, 12, '> 85 - 90', 4),
+(32, 12, '> 75 - 85', 3),
+(33, 12, '> 60 - 75', 2),
+(34, 12, '< 60', 1);
 
 -- --------------------------------------------------------
 
@@ -138,7 +191,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `nama_user`, `jabatan`, `username`, `password`, `last_login`) VALUES
 (30, 'Coba Saja', 'Kepala Sekolah', 'user', '$2y$10$aWYsFysjKY3zeT/afT6QeO0VO.OMkcHLZmzbxunzRSqF4fpJ8u0dq', '2022-09-09 08:47:53'),
-(31, 'Fredik Stefan', 'Admin', 'admin', '$2y$10$KmFocfv62tAnubLGioCOWOOlKuKZCiXyzalK9CLnLAfGswGOW1bPi', '2022-09-30 20:20:54'),
+(31, 'Fredik Stefan', 'Admin', 'admin', '$2y$10$KmFocfv62tAnubLGioCOWOOlKuKZCiXyzalK9CLnLAfGswGOW1bPi', '2022-10-09 22:30:10'),
 (34, 'asdasd', 'Admin', 'stefan', '$2y$10$j14NOr/zfhLgY8o/8DehKOUgtKCecmL/0p0jomaRyv9YoDQyCYWj2', '0000-00-00 00:00:00');
 
 --
@@ -170,6 +223,12 @@ ALTER TABLE `siswa`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `subkriteria`
+--
+ALTER TABLE `subkriteria`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
@@ -183,25 +242,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `kriteria`
 --
 ALTER TABLE `kriteria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT untuk tabel `peserta`
 --
 ALTER TABLE `peserta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT untuk tabel `siswa`
 --
 ALTER TABLE `siswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT untuk tabel `subkriteria`
+--
+ALTER TABLE `subkriteria`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
