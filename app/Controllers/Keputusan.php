@@ -8,7 +8,7 @@ use App\Models\PesertaModel;
 class Keputusan extends BaseController {
     public function __construct() {
         $this->pesertaModel = new PesertaModel();
-        $this->point = 'peserta';
+        $this->point = 'keputusan';
     }
     public function index() {
         $data = [
@@ -31,6 +31,6 @@ class Keputusan extends BaseController {
             ]
         ];
 
-        return view('/peserta/table', $data);
+        return view('/keputusan/table', $data);
     }
 }

@@ -1,47 +1,19 @@
 <?= $this->extend("template/index"); ?>
 
 <?= $this->section("content"); ?>
+
 <div class="row">
     <div class="col">
         <div class="card">
             <div class="card-header">
                 <h3> Tabel Normalisasi</h3>
             </div>
-            <div id="" class="card-body">
-                <?= $this->include("/nilai/normalisasi"); ?>
+            <div id="data" class="card-body">
             </div>
         </div>
     </div>
 </div>
 
-<hr>
-
-<div class="row">
-    <div class="col">
-        <div class="card">
-            <div class="card-header">
-                <h3> Tabel Optimasi</h3>
-            </div>
-            <div id="" class="card-body">
-                <?= $this->include("/nilai/optimasi"); ?>
-            </div>
-        </div>
-    </div>
-</div>
-<hr>
-
-<div class="row">
-    <div class="col">
-        <div class="card">
-            <div class="card-header">
-                <h3> Tabel Nilai </h3>
-            </div>
-            <div id="" class="card-body">
-                <?= $this->include("/nilai/nilai"); ?>
-            </div>
-        </div>
-    </div>
-</div>
 
 <?= $this->endSection(); ?>
 
@@ -50,30 +22,9 @@
 
 <script>
     let baseUrl = "<?= $url['parent']; ?>";
-    const setup = {
-        columnDefs: [{
-            width: 20,
-            targets: 0
-        }],
-        "language": {
-            "paginate": {
-                "first": "Awal",
-                "last": "Akhir",
-                "next": '<i class="bi bi-arrow-right-circle"></i>',
-                "previous": '<i class="bi bi-arrow-left-circle"></i>'
-            },
-            "zeroRecords": "Data tidak ditemukan.",
-            "search": "Cari:",
-            "lengthMenu": "Tampil _MENU_ kolom",
-            "info": "Kolom _START_ sampai _END_ dari _TOTAL_ kolom",
-        }
-    };
+
     $(document).ready(() => {
-
         getTable(baseUrl);
-
-        $(`#normalisasi`).DataTable(setup);
-        $(`#optimasi`).DataTable(setup);
     });
 </script>
 

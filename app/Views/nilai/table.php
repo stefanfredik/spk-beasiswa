@@ -19,10 +19,6 @@ foreach ($dataPeserta as $dt) {
             <tr>
                 <th>No</th>
                 <th>Siswa</th>
-                <th>C1</th>
-                <th>C2</th>
-                <th>C3</th>
-                <th>C4</th>
                 <th>Nilai</th>
                 <!-- <th>Status</th> -->
             </tr>
@@ -35,10 +31,6 @@ foreach ($dataPeserta as $dt) {
                 <tr>
                     <td><?= $no++; ?></td>
                     <td><?= $dt['nama_siswa']; ?></td>
-                    <th><?= bobotPenghasilan($dt['penghasilan']); ?></th>
-                    <th><?= bobotTanggungan($dt['tanggungan']); ?></th>
-                    <th><?= bobotYatim($dt['yatimpiatu']); ?></th>
-                    <th><?= bobotNilai($dt['nilai']); ?></th>
                     <td width="100px">
                         <?php
 
