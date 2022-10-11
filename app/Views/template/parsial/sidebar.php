@@ -57,6 +57,12 @@
             <span>Data Peserta</span></a>
     </li>
 
+    <li class="nav-item <?= $url['parent'] == 'moora' ? 'active' : ''; ?>">
+        <a class="nav-link" href="/moora">
+            <i class="bi bi-card-checklist"></i>
+            <span>Tabel Moora</span></a>
+    </li>
+
     <li class="nav-item <?= $url['parent'] == 'nilai' ? 'active' : ''; ?>">
         <a class="nav-link" href="/nilai">
             <i class="bi bi-card-checklist"></i>

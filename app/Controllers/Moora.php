@@ -6,22 +6,22 @@ use App\Controllers\BaseController;
 use App\Models\KriteriaModel;
 use App\Models\PesertaModel;
 
-class Nilai extends BaseController {
+class Moora extends BaseController {
     public function __construct() {
         $this->pesertaModel = new PesertaModel();
-        $this->point = 'nilai';
+        $this->point = 'moora';
         $this->kriteriaModel = new KriteriaModel();
     }
 
     public function index() {
         $data = [
-            'title' => "Nilai",
+            'title' => "Penghitungan Moora",
             'dataPeserta' => $this->pesertaModel->findAllPeserta(),
             'kriteria'    => $this->kriteriaModel->findAll(),
             'url'       => [
                 'parent'    => $this->point
             ]
         ];
-        return view('/nilai/index', $data);
+        return view('/moora/index', $data);
     }
 }

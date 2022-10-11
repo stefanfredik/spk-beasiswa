@@ -7,8 +7,8 @@
             <div class="card-header">
                 <h3> Tabel Normalisasi</h3>
             </div>
-            <div id="" class="card-body">
-                <?= $this->include("/nilai/normalisasi"); ?>
+            <div class="card-body">
+                <?= $this->include("/moora/normalisasi"); ?>
             </div>
         </div>
     </div>
@@ -22,8 +22,8 @@
             <div class="card-header">
                 <h3> Tabel Optimasi</h3>
             </div>
-            <div id="" class="card-body">
-                <?= $this->include("/nilai/optimasi"); ?>
+            <div class="card-body">
+                <?= $this->include("/moora/optimasi"); ?>
             </div>
         </div>
     </div>
@@ -36,8 +36,8 @@
             <div class="card-header">
                 <h3> Tabel Nilai </h3>
             </div>
-            <div id="" class="card-body">
-                <?= $this->include("/nilai/nilai"); ?>
+            <div class="card-body">
+                <?= $this->include("/moora/nilai"); ?>
             </div>
         </div>
     </div>
@@ -74,6 +74,7 @@
 
         $(`#normalisasi`).DataTable(setup);
         $(`#optimasi`).DataTable(setup);
+        $(`#nilai`).DataTable(setup);
     });
 </script>
 

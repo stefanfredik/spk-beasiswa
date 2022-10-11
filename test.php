@@ -67,11 +67,11 @@ echo nilaiAkhir($data) . PHP_EOL;
 $kriteria = array();
 
 
-function hitungMoora(array $kriteria) {
-    $no = 1;
-
+function hitungMoora(array $kriteria, array $dataPeserta) {
     foreach ($kriteria as $i => $k) {
-        $bobot[$i] = bobotPenghasilan($k['penghasilan']);
+        $bobot[$i] = bobotPenghasilan($k['kriteria']);
+        $allC[$i] = array();
+        array_push($allC[$i],)
     }
 }
 

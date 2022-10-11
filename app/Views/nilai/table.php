@@ -19,7 +19,10 @@ foreach ($dataPeserta as $dt) {
             <tr>
                 <th>No</th>
                 <th>Siswa</th>
-                <th>Nisn</th>
+                <th>C1</th>
+                <th>C2</th>
+                <th>C3</th>
+                <th>C4</th>
                 <th>Nilai</th>
                 <!-- <th>Status</th> -->
             </tr>
@@ -32,7 +35,10 @@ foreach ($dataPeserta as $dt) {
                 <tr>
                     <td><?= $no++; ?></td>
                     <td><?= $dt['nama_siswa']; ?></td>
-                    <td width="100px"><?= $dt['nisn'] ?></td>
+                    <th><?= bobotPenghasilan($dt['penghasilan']); ?></th>
+                    <th><?= bobotTanggungan($dt['tanggungan']); ?></th>
+                    <th><?= bobotYatim($dt['yatimpiatu']); ?></th>
+                    <th><?= bobotNilai($dt['nilai']); ?></th>
                     <td width="100px">
                         <?php
 
@@ -40,6 +46,7 @@ foreach ($dataPeserta as $dt) {
                         $nilaiC2 = bobotTanggungan($dt['tanggungan']);
                         $nilaiC3 = bobotYatim($dt['yatimpiatu']);
                         $nilaiC4 = bobotNilai($dt['nilai']);
+
                         $jumKriteria = 18;
 
                         $bobotC1 = hitungBobot(5, $jumKriteria);
