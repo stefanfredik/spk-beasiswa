@@ -22,7 +22,10 @@ foreach ($dataPeserta as $dt) {
                 <th>No</th>
                 <th width="100px">Rangking</th>
                 <th>Nama Siswa</th>
+                <th>NISN</th>
+
                 <th>Nilai</th>
+                <th>Kriteria</th>
                 <th width="100px">Tahap</th>
             </tr>
         </thead>
@@ -43,6 +46,8 @@ foreach ($dataPeserta as $dt) {
 
                     badge rounded-pill fs-5"> <?= $rangking++ ?></span></td>
                     <td class="text-left"><?= $dt['nama_siswa']; ?></td>
+                    <td class="text-left"><?= $dt['nisn']; ?></td>
+
 
                     <td>
                         <?php
@@ -73,6 +78,27 @@ foreach ($dataPeserta as $dt) {
 
                         $nilaiAkhir = nilaiAkhir([$opC1, $opC2, $opC3, $opC4]);
                         echo $nilaiAkhir;
+                        ?>
+                    </td>
+                    <td class="text-left">
+                        <?php
+                        $C = [$opC1, $opC2, $opC3, $opC4];
+                        $maxC = max($C);
+                        $iMax = array_search($maxC, $C);
+                        switch ($iMax) {
+                            case 0:
+                                echo 'C1';
+                                break;
+                            case 1:
+                                echo 'C2';
+                                break;
+                            case 2:
+                                echo 'C3';
+                                break;
+                            case 3:
+                                echo 'C4';
+                                break;
+                        }
                         ?>
                     </td>
 

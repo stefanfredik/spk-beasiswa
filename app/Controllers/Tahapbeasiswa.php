@@ -3,52 +3,51 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\KriteriaModel;
-use App\Models\UserModel;
+use App\Models\Tahapbeasiswa as ModelsTahapbeasiswa;
 use CodeIgniter\API\ResponseTrait;
 
-class Kriteria extends BaseController {
+class Tahapbeasiswa extends BaseController {
     use ResponseTrait;
-
     public function __construct() {
-        $this->KriteriaModel = new KriteriaModel();
-        $this->point =  'kriteria';
+        $this->tahapModel = new ModelsTahapbeasiswa();
+        $this->point =  'tahapbeasiswa';
     }
 
     public function index() {
         $data = [
-            'title' => 'Data Kriteria',
+            'title' => 'Tahap Beasiswa',
             'url'   => [
-                'parent' => 'kriteria'
+                'parent' => $this->point
             ]
         ];
 
-        return view('/kriteria/index', $data);
+        return view('/tahapbeasiswa/index', $data);
     }
+
 
     public function table() {
         $data = [
-            'kriteria' => $this->KriteriaModel->findAll(),
+            'tahap' => $this->tahapModel->findAll(),
             'url'       => [
                 'parent'    => $this->point
             ]
         ];
 
-        return view('/kriteria/table', $data);
+        return view('/tahapbeasiswa/table', $data);
     }
 
     public function tambah() {
         $data = [
-            'title' => "Tambah Data Kriteria"
+            'title' => "Tambah Data Tahap Beasiswa"
         ];
 
-        return view('/kriteria/tambah', $data);
+        return view('/tahapbeasiswa/tambah', $data);
     }
 
     public function save($id = null) {
         if ($id == null) {
             $data = $this->request->getPost();
-            $this->KriteriaModel->save($data);
+            $this->tahapModel->save($data);
 
             $res = [
                 'status'    => 'success',
@@ -58,7 +57,7 @@ class Kriteria extends BaseController {
             return $this->respond($res);
         } else {
             $data = $this->request->getPost();
-            $this->KriteriaModel->update($id, $data);
+            $this->tahapModel->update($id, $data);
 
             $res = [
                 'status'    => 'success',
@@ -70,7 +69,7 @@ class Kriteria extends BaseController {
     }
 
     public function delete($id) {
-        $this->KriteriaModel->delete($id);
+        $this->tahapModel->delete($id);
 
         $res = [
             'status'    => 'success',
@@ -83,9 +82,9 @@ class Kriteria extends BaseController {
     public function get($id) {
         $data = [
             "title" => "Edit Data User",
-            "kriteria" => $this->KriteriaModel->find($id)
+            "tahap" => $this->tahapModel->find($id)
         ];
 
-        return view("/kriteria/edit", $data);
+        return view("/tahapbeasiswa/edit", $data);
     }
 }

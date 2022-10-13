@@ -39,7 +39,10 @@ class Siswa extends BaseController {
 
     public function table() {
         $data = [
-            'dataSiswa' => $this->SiswaModel->findAll()
+            'dataSiswa' => $this->SiswaModel->findAll(),
+            'url'   => [
+                'parent'    => 'siswa'
+            ]
         ];
 
         return view('/siswa/table', $data);

@@ -69,9 +69,6 @@
         }
     };
     $(document).ready(() => {
-
-        getTable(baseUrl);
-
         $(`#normalisasi`).DataTable(setup);
         $(`#optimasi`).DataTable(setup);
         $(`#nilai`).DataTable(setup);

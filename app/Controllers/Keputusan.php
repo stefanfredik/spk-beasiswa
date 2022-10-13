@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\PesertaModel;
+use App\Models\Tahapbeasiswa;
 
 class Keputusan extends BaseController {
     public function __construct() {
@@ -23,9 +24,11 @@ class Keputusan extends BaseController {
     public function table() {
         // dd($this->pesertaModel->findAllPeserta());
 
+        $tahapModel = new Tahapbeasiswa();
         $data = [
             'title' => 'Data Keputusan',
             'dataPeserta' => $this->pesertaModel->findAllPeserta(),
+            'tahap'        => $tahapModel->findAll(),
             'url'       => [
                 'parent'    => $this->point
             ]

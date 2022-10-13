@@ -83,6 +83,10 @@
                 $("#modal").modal("show");
             }
         }).catch((err) => {
+            Toast.fire({
+                icon: 'error',
+                title: 'Gagal mengedit data!'
+            })
             console.log(err);
         });
     }
@@ -116,13 +120,19 @@
                         "next": '<i class="bi bi-arrow-right-circle"></i>',
                         "previous": '<i class="bi bi-arrow-left-circle"></i>'
                     },
-                    "zeroRecords": "Data tidak ditemukan.",
+                    "zeroRecords": "Belum ada data.",
                     "search": "Cari:",
                     "lengthMenu": "Tampil _MENU_ kolom",
                     "info": "Kolom _START_ sampai _END_ dari _TOTAL_ kolom",
                 }
                 // fixedColumns: false
             });
+        }).fail((e) => {
+            Toast.fire({
+                icon: 'error',
+                title: 'Gagal mendapatkan data.'
+            });
+            console.log(e);
         });
     }
 </script>

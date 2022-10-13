@@ -9,7 +9,7 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label class="form-label">Nisn</label>
-                        <input name="nisn" type="text" class="form-control" required>
+                        <input name="nisn" type="text" maxlength="10" minlength="10" class="form-control" required>
                         <div id="" class="invalid-feedback"></div>
                     </div>
 

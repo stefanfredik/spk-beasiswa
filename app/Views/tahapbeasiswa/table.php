@@ -1,25 +1,24 @@
-<div class="table-responsive">
-    <table class="table table-bordered" id="siswa" width="100%" colspacing="0">
-        <thead>
+<div class="table-responsive align-middle">
+    <table class="table border table-bordered table-striped table-hover" id="<?= $url['parent']; ?>" width="100%" colspacing="0">
+        <thead class="table-light">
             <tr>
                 <th>No</th>
-                <th>NISN</th>
-                <th>Nama Siswa</th>
-                <th>Jenis Kelamin</th>
-                <th>Alamat</th>
-                <th>Action</th>
+                <th>Tahap</th>
+                <th>Jumlah Peserta</th>
+                <th>Keterangan</th>
+                <th>Opsi</th>
             </tr>
         </thead>
         <tbody>
-            <?php $no = 1;
-
-            foreach ($dataSiswa as $dt) :  ?>
+            <?php
+            $no = 1;
+            foreach ($tahap as $dt) :
+            ?>
                 <tr>
                     <td><?= $no++; ?></td>
-                    <td><?= $dt['nisn']; ?></td>
-                    <td><?= ucwords($dt['nama_siswa']); ?></td>
-                    <td><?= ucwords($dt["jenis_kelamin"]); ?></td>
-                    <td><?= ucwords($dt['alamat']); ?></td>
+                    <td><?= $dt['tahap']; ?></td>
+                    <td><?= $dt['jumlah']; ?></td>
+                    <td><?= $dt['keterangan']; ?></td>
                     <td style="text-align: center" width="120px">
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <a onclick="hapus(event,this)" class="btn btn-danger" href="/<?= $url['parent']; ?>/delete/<?= $dt['id']; ?>"><i class="bi bi-trash mr-2"></i></a>

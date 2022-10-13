@@ -48,6 +48,12 @@
             <span>Data Sub Kriteria</span></a>
     </li>
 
+    <li class="nav-item <?= @$url['parent'] == 'tahapbeasiswa' ? 'active' : ''; ?>">
+        <a class="nav-link" href="/tahapbeasiswa">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Tahap Beasiswa</span></a>
+    </li>
+
 
     <hr class="sidebar-divider">
 
