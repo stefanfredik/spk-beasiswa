@@ -23,8 +23,6 @@ class Laporan extends BaseController {
     }
 
     public function table() {
-        // dd($this->pesertaModel->findAllPeserta());
-
         $tahapModel = new Tahapbeasiswa();
         $data = [
             'title' => 'Data Laporan',
@@ -38,7 +36,7 @@ class Laporan extends BaseController {
         return view('/laporan/table', $data);
     }
 
-    public function cetak($idsiswa) {
+    public function cetak() {
 
         $tahapModel = new Tahapbeasiswa();
         $data = [
@@ -52,10 +50,10 @@ class Laporan extends BaseController {
 
         $pdf = new Dompdf();
 
-        $html = view("/guru/raportsiswa/cetak", $data);
+        $html = view("/laporan/cetak", $data);
         $pdf->loadHtml($html);
         $pdf->setPaper('A4', 'potrait');
         $pdf->render();
-        $pdf->stream();
+        return $pdf->stream();
     }
 }
