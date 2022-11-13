@@ -26,7 +26,9 @@
 
 <body id="page-top">
     <div id="wrapper">
-        <?= $this->include("/template/parsial/sidebar"); ?>
+        <?= (session()->get('jabatan') == 'Admin') ?  $this->include("/template/parsial/sidebar") :   $this->include("/template/parsial/sidebarKepalasekolah"); ?>
+
+
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
                 <?= $this->include("template/parsial/navbar"); ?>

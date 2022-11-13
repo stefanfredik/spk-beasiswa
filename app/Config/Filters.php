@@ -71,7 +71,7 @@ class Filters extends BaseConfig {
      */
     public $filters = [
         'auth' => [
-            'before' => ['/', '/home', '/keputusan', '/kriteria', '/laporan', '/nilai', '/siswa', '/user']
+            'before' => ['/dashboard', '/keputusan', '/kriteria', '/laporan', '/nilai', '/siswa', '/user']
         ]
     ];
 }

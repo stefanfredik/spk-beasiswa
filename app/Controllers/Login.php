@@ -72,7 +72,7 @@ class Login extends BaseController {
     }
 
     public function logout() {
-        $this->session->destroy();
+        session()->destroy();
         return redirect()->to('/');
     }
 }

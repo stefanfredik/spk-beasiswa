@@ -8,8 +8,7 @@ use App\Models\PesertaModel;
 use App\Models\SiswaModel;
 use App\Models\SubkriteriaModel;
 use CodeIgniter\API\ResponseTrait;
-use CodeIgniter\Config\Config;
-use Config\Database;
+
 
 class Peserta extends BaseController {
     use ResponseTrait;
@@ -67,12 +66,10 @@ class Peserta extends BaseController {
             'siswa' => $this->siswaModel->findAll(),
             "peserta" => $this->pesertaModel->findPeserta($id)
         ];
-
         return view("/peserta/edit", $data);
     }
 
     public function save($id = null) {
-
         if ($id == null) {
             $rules = [
                 'nisn'  => [

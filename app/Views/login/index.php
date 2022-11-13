@@ -69,8 +69,6 @@
             const username = $("#username").val();
             const pass = $("#pass").val();
 
-
-
             $.ajax({
                 url: '/login',
                 method: 'POST',

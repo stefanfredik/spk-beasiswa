@@ -24,7 +24,6 @@ class Authenticate implements FilterInterface {
      * @return mixed
      */
     public function before(RequestInterface $request, $arguments = null) {
-        // $session = \Config\Services::session();
         if (!session()->get('isLogin')) {
             return redirect()->to('/login');
         }
