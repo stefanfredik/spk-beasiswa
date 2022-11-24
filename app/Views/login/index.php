@@ -12,51 +12,63 @@
     <title><?= WEB_TITLE; ?> - Login</title>
 
     <!-- Custom fonts for this template-->
-    <link href="/sb/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <link href="/sb/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.css" rel="stylesheet" />
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class="">
+    <section class="text-center">
+        <div class="p-5 bg-image" style="
+        background-image: url('/assets/img/bg.jpg');
+        height: 300px;
+        "></div>
 
-    <div class="container">
-        <div class="mt-4 p-2 row justify-content-center">
-            <h3 class="text-white"><?= WEB_TITLE; ?></h3>
-        </div>
+
 
         <div class="row justify-content-center">
-            <div class="col-xl-4 col-lg-14 col-md-4">
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <div class="card-body p-0">
-                        <div class="row">
-                            <!-- <div class="col-lg-6 d-none d-lg-block bg-login-image"></div> -->
-                            <div class="col-lg-12">
-                                <div class="my-4 px-5">
-                                    <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Halaman Login</h1>
+            <div class="col-md-12">
+
+                <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+                        margin-top: -100px;
+                        background: hsla(0, 0%, 100%, 0.4);
+                        backdrop-filter: blur(20px);
+                    ">
+                    <div class="card-body p-5 px-md-5">
+                        <div class="row d-flex justify-content-center">
+                            <div class="rounded col-lg-4 p-3 border rounded" style="         background: hsla(0, 0%, 100%, 0.4);
+                        backdrop-filter: blur(20px);">
+                                <img style="height: 100px;" class="img-fluid" src="/assets/img/logo.png" alt="">
+                                <h2 class="fw-bold mb-5">Silahkan Login</h2>
+                                <form>
+                                    <div class="form-outline mb-4">
+                                        <input type="text" id="username" class="form-control" />
+                                        <label class="form-label" for="username">Username</label>
                                     </div>
-                                    <form class="user" onsubmit="login(event)">
-                                        <div class="form-group">
-                                            <input id="username" type="text" class="form-control form-control-user" placeholder="Masukan Username">
-                                        </div>
-                                        <div class="form-group">
-                                            <input id="pass" type="password" class="form-control form-control-user" placeholder="Masukan Password">
-                                        </div>
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </button>
-                                    </form>
-                                </div>
+
+                                    <!-- Password input -->
+                                    <div class="form-outline mb-4">
+                                        <input type="password" id="pass" class="form-control" />
+                                        <label class="form-label" for="password">Password</label>
+                                    </div>
+                                    <!-- Submit button -->
+                                    <button type="submit" class="btn btn-primary btn-block mb-4 py-3">
+                                        Login
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
+    </section>
     <!-- Bootstrap core JavaScript-->
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.1/mdb.min.js"></script>
     <script src="/sb/vendor/jquery/jquery.min.js"></script>
     <script src="/sb/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/sb/vendor/jquery-easing/jquery.easing.min.js"></script>
