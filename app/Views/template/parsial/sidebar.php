@@ -1,4 +1,4 @@
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-white sidebar text-dark accordion" id="accordionSidebar">
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="bi bi-ui-checks"></i>
@@ -17,6 +17,7 @@
     </li>
 
     <!-- Divider -->
+
     <hr class="sidebar-divider">
 
     <!-- Heading -->
@@ -36,17 +37,19 @@
             <span>Data Siswa</span></a>
     </li>
 
-    <li class="nav-item <?= @$url['parent'] == 'kriteria' ? 'active' : ''; ?>">
-        <a class="nav-link" href="/kriteria">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Data Kriteria</span></a>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Kriteria</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item <?= url_is("kriteria*") ? 'active' : ''; ?>" href="/kriteria">Kriteria</a>
+                <a class="collapse-item <?= url_is("subkriteria*") ? 'active' : ''; ?> " href="/subkriteria">Subkriteria</a>
+            </div>
+        </div>
     </li>
 
-    <li class="nav-item <?= @$url['parent'] == 'subkriteria' ? 'active' : ''; ?>">
-        <a class="nav-link" href="/subkriteria">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Data Sub Kriteria</span></a>
-    </li>
 
     <li class="nav-item <?= @$url['parent'] == 'tahapbeasiswa' ? 'active' : ''; ?>">
         <a class="nav-link" href="/tahapbeasiswa">
@@ -67,12 +70,6 @@
         <a class="nav-link" href="/moora">
             <i class="bi bi-card-checklist"></i>
             <span>Tabel Moora</span></a>
-    </li>
-
-    <li class="nav-item <?= $url['parent'] == 'nilai' ? 'active' : ''; ?>">
-        <a class="nav-link" href="/nilai">
-            <i class="bi bi-card-checklist"></i>
-            <span>Pilihan Nilai</span></a>
     </li>
 
     <li class="nav-item <?= @$url['parent'] == 'keputusan' ? 'active' : ''; ?>">

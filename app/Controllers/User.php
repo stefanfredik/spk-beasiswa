@@ -3,13 +3,14 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\UserModel;
+use App\Models\MyUserModel;
 use CodeIgniter\API\ResponseTrait;
+use Myth\Auth\Password;
 
 class User extends BaseController {
     use ResponseTrait;
     public function __construct() {
-        $this->UserModel = new UserModel();
+        $this->UserModel = new MyUserModel();
         $this->point =  'user';
     }
 
@@ -73,12 +74,11 @@ class User extends BaseController {
 
             $data = [
                 'nama_user' => $request['nama_user'],
-                'jabatan' => $request['jabatan'],
                 'username' => $request['username'],
-                'password' => password_hash($request['password'], PASSWORD_DEFAULT),
-                'last-login' => '',
+                'password_hash' => Password::hash($request['password']),
+                'active'    => "1"
             ];
-            $this->UserModel->save($data);
+            $this->UserModel->withGroup($request['jabatan'])->save($data);
 
             $res = [
                 'status'    => 'success',
@@ -128,7 +128,8 @@ class User extends BaseController {
 
     public function tambah() {
         $data = [
-            'title' => "Data Siswa"
+            'title' => "Data Siswa",
+            'role' => $this->UserModel->findAllRole()
         ];
 
         return view('/user/tambah', $data);
@@ -148,7 +149,8 @@ class User extends BaseController {
     public function get($id) {
         $data = [
             "title" => "Edit Data User",
-            "user" => $this->UserModel->find($id)
+            "user" => $this->UserModel->find($id),
+            'role' => $this->UserModel->findAllRole()
         ];
 
         return view("/user/edit", $data);

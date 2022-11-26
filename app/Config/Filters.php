@@ -22,7 +22,10 @@ class Filters extends BaseConfig {
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
-        'auth'          => \App\Filters\Authenticate::class
+        'auth'          => \App\Filters\Authenticate::class,
+        'login'         => \Myth\Auth\Filters\LoginFilter::class,
+        'role'          => \Myth\Auth\Filters\RoleFilter::class,
+        'permission'    => \Myth\Auth\Filters\PermissionFilter::class,
     ];
 
     /**
@@ -33,6 +36,7 @@ class Filters extends BaseConfig {
      */
     public $globals = [
         'before' => [
+            'login'
             // 'honeypot',
             // 'csrf',
             // 'invalidchars',
@@ -70,8 +74,8 @@ class Filters extends BaseConfig {
      * @var array
      */
     public $filters = [
-        'auth' => [
-            'before' => ['/dashboard', '/keputusan', '/kriteria', '/laporan', '/nilai', '/siswa', '/user']
-        ]
+        // 'auth' => [
+        //     'before' => ['/dashboard', '/keputusan', '/kriteria', '/laporan', '/nilai', '/siswa', '/user']
+        // ]
     ];
 }

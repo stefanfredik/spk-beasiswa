@@ -1,6 +1,7 @@
 <?= $this->extend("template/index"); ?>
 <?= $this->section("content"); ?>
 <!-- Content Row -->
+
 <div class="row">
 
     <!-- Earnings (Monthly) Card Example -->

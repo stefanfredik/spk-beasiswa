@@ -16,8 +16,9 @@
                         <label class="form-label">Jabatan</label>
                         <select class="form-control" name="jabatan" id="" required>
                             <option value="">Pilih Jabatan</option>
-                            <option <?= $user['jabatan'] === 'Admin' ? 'selected' : ''; ?> value="Admin">Admin</option>
-                            <option <?= $user['jabatan'] === 'Kepala Sekolah' ? 'selected' : ''; ?> value="Kepala Sekolah">Kepala Sekolah</option>
+                            <?php foreach ($role as $r) : ?>
+                                <option <?= $user['jabatan'] === $r['name'] ? 'selected' : ''; ?> value="<?= $r['name']; ?>"><?= $r['name']; ?></option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
 
