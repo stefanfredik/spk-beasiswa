@@ -55,6 +55,7 @@ class Peserta extends BaseController {
             'title' => 'Data Peserta',
             'url'   => $this->url,
             'dataKriteria' => $this->kriteriaModel->findAll(),
+            'dataSubkriteria' => $this->subkriteriaModel->findAll(),
             'siswaModel' => $this->siswaModel->findAll(),
             'dataPeserta' => $this->pesertaModel->findAllPeserta(),
             'url'       => [
@@ -73,7 +74,7 @@ class Peserta extends BaseController {
             'dataKriteria'  => $this->kriteriaModel->findAll(),
             'dataSubkriteria' => $this->subkriteriaModel->findAll(),
             'dataSiswa' => $this->siswaModel->findAll(),
-            'peserta' => $this->pesertaModel->findAllPeserta($id),
+            'peserta' => $this->pesertaModel->findPeserta($id),
             'url'   => $this->url
         ];
 
@@ -98,16 +99,29 @@ class Peserta extends BaseController {
         return $this->respond(view('/peserta/detail', $data), 200);
     }
 
-    public function save() {
-        $data = $this->request->getPost();
-        $this->pesertaModel->save($data);
+    public function save($id = null) {
+        if ($id = null) {
+            $data = $this->request->getPost();
+            $this->pesertaModel->save($data);
 
-        $res = [
-            'status'    => 'success',
-            'msg'     => 'Berhasil menambah Data.',
-        ];
+            $res = [
+                'status'    => 'success',
+                'msg'     => 'Berhasil menambah Data.',
+            ];
 
-        return $this->respond($res, 200);
+            return $this->respond($res, 200);
+        } else {
+            $data = $this->request->getPost();
+            $this->pesertaModel->update($id, $data);
+
+            $res = [
+                'status' => 'success',
+                'msg'   => 'Data User Berhasil Diupdate.',
+                'data'  => $data
+            ];
+
+            return $this->respond($res, 200);
+        }
     }
 
 

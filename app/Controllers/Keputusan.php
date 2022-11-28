@@ -39,7 +39,7 @@ class Keputusan extends BaseController {
         $moora = new MooraLib($peserta, $kriteria, $subkriteria, $kelayakan);
 
         $data = [
-            'title'         => 'Data Perhitungan dan Table Moora',
+            'title'         => 'Data Keputusan Beasiswa Peserta',
             'peserta'       => $moora->getAllPeserta(),
             'kelayakan'     => $kelayakan,
             'tahap'        => $this->tahapModel->findAll(),

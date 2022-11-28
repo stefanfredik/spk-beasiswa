@@ -73,11 +73,11 @@
             <span>Tabel Moora</span></a>
     </li>
 
-    <li class="nav-item <?= @$url['parent'] == 'kelayakan' ? 'active' : ''; ?>">
+    <!-- <li class="nav-item <?= @$url['parent'] == 'kelayakan' ? 'active' : ''; ?>">
         <a class="nav-link " href="/kelayakan">
             <i class="bi bi-shield-check"></i>
             <span>Data Kelayakan</span></a>
-    </li>
+    </li> -->
 
     <li class="nav-item <?= @$url['parent'] == 'keputusan' ? 'active' : ''; ?>">
         <a class="nav-link " href="/keputusan">

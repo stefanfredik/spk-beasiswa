@@ -29,7 +29,7 @@
 
 <body>
     <div>
-        <h3>Laporan Beasiswa Tahun 2022</h3>
+        <h3>Laporan Data Pengampilan Keputusan Beasiswa Tahun 2022</h3>
         <table id="table" class="table border" width="100%" colspacing="0">
             <thead>
                 <tr class="align-middle">
@@ -40,7 +40,6 @@
                     <th>Jenis Kelamin</td>
                     <th>Alamat</td>
                     <th>Nilai Akhir</td>
-                    <th>Status Layak</th>
                     <th>Tahap</th>
                 </tr>
             </thead>
@@ -58,7 +57,6 @@
                         <td><?= $ps['jenis_kelamin'] ?></td>
                         <td><?= $ps['alamat'] ?></td>
                         <td><?= $ps['kriteria_nilai']; ?></td>
-                        <th><?= @$ps['status_layak']; ?></th>
                         <td>
                             <?php
                             $total = 1;
