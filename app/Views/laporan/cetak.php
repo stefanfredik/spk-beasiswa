@@ -29,7 +29,7 @@
 
 <body>
     <div>
-        <h3>Laporan Data BLT Periode 1 Tahun 2022</h3>
+        <h3>Laporan Beasiswa Tahun 2022</h3>
         <table id="table" class="table border" width="100%" colspacing="0">
             <thead>
                 <tr class="align-middle">

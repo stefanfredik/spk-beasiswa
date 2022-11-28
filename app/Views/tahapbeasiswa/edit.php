@@ -22,7 +22,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Keterangan</label>
-                        <input value="<?= $tahap['keterangan']; ?>" name="keterangan" type="text" class="form-control" required>
+                        <input value="<?= $tahap['keterangan']; ?>" name="keterangan" type="text" class="form-control">
                         <div id="" class="invalid-feedback"></div>
                     </div>
 
