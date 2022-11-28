@@ -2,38 +2,51 @@
 
 namespace App\Controllers;
 
+
 use App\Controllers\BaseController;
+use App\Libraries\Moora as MooraLib;
+use App\Models\KelayakanModel;
+use App\Models\KriteriaModel;
 use App\Models\PesertaModel;
+use App\Models\SiswaModel;
+use App\Models\SubkriteriaModel;
 use App\Models\Tahapbeasiswa;
 
 class Keputusan extends BaseController {
+    private $point = 'keputusan';
+    private $jenisBantuan = 'blt';
+
     public function __construct() {
+        $this->kriteriaModel = new KriteriaModel();
+        $this->siswaModel = new SiswaModel();
+        $this->subkriteriaModel = new SubkriteriaModel();
         $this->pesertaModel = new PesertaModel();
-        $this->point = 'keputusan';
+        $this->jumlahKriteria = $this->kriteriaModel->countAllResults();
+        $this->kelayakanModel = new KelayakanModel();
+        $this->tahapModel = new Tahapbeasiswa();
     }
+
     public function index() {
-        $data = [
-            'title' => "Keputusan",
-            'url'       => [
-                'parent'    => 'keputusan'
-            ]
-        ];
-        return view('/keputusan/index', $data);
-    }
+        $kriteria       = $this->kriteriaModel->findAll();
+        $subkriteria    = $this->subkriteriaModel->findAll();
+        $peserta        = $this->pesertaModel->findAllPeserta();
+        $kelayakan      = $this->kelayakanModel->findAll();
 
-    public function table() {
-        // dd($this->pesertaModel->findAllPeserta());
+        helper('Check');
+        $check = checkdata($peserta, $kriteria, $subkriteria, $kelayakan);
+        if ($check) return view('/error/index', ['title' => 'Error', 'listError' => $check]);
 
-        $tahapModel = new Tahapbeasiswa();
+        $moora = new MooraLib($peserta, $kriteria, $subkriteria, $kelayakan);
+
         $data = [
-            'title' => 'Data Keputusan',
-            'dataPeserta' => $this->pesertaModel->findAllPeserta(),
-            'tahap'        => $tahapModel->findAll(),
+            'title'         => 'Data Perhitungan dan Table Moora',
+            'peserta'       => $moora->getAllPeserta(),
+            'kelayakan'     => $kelayakan,
+            'tahap'        => $this->tahapModel->findAll(),
             'url'       => [
                 'parent'    => $this->point
             ]
         ];
-
-        return view('/keputusan/table', $data);
+        return view('keputusan/index', $data);
     }
 }

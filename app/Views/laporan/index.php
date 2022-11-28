@@ -1,44 +1,48 @@
-<?= $this->extend("template/index"); ?>
-
+<?= $this->extend('template/index'); ?>
 <?= $this->section("content"); ?>
+
 <a target="__blank" href="/laporan/cetak" href="" class="btn btn-primary my-2"><i class="bi bi-printer mr-2"></i>Cetak Laporan</a>
 <div class="row">
     <div class="col">
-        <div class="card">
+        <div class="card  shadow">
             <div class="card-header">
-                <h3>Data <?= $title; ?></h3>
+                <h3><?= $title; ?></h3>
             </div>
             <div id="data" class="card-body">
+                <?= $this->include("/laporan/table"); ?>
             </div>
         </div>
     </div>
 </div>
-
-<div id="modalArea">
-</div>
-
 <?= $this->endSection(); ?>
 
-
 <?= $this->section("script"); ?>
-
 <script>
-    let baseUrl = "<?= $url['parent']; ?>";
-    $(document).ready(() => {
-        getTable(baseUrl);
-    });
-
-
-    function validation(error) {
-        if (error.nisn) {
-            $("select[name='nisn']").addClass("is-invalid").next().html(error.nisn);
+    const config = {
+        columnDefs: [{
+            width: 20,
+            targets: 0
+        }],
+        language: {
+            paginate: {
+                first: "Awal",
+                last: "Akhir",
+                next: ' <i class="bi bi-arrow-right-circle"></i>',
+                previous: '<i class="bi bi-arrow-left-circle"></i>'
+            },
+            zeroRecords: "Belum ada data.",
+            search: "Cari:",
+            lengthMenu: "Tampil _MENU_ kolom",
+            info: "Kolom _START_ sampai _END_ dari _TOTAL_ kolom"
         }
+    };
+
+    $('#tablePenduduk').DataTable(config)
+    $('#tableBlt').DataTable(config)
+
+
+    function cetakLaporanBlt() {
+        alert("blt");
     }
 </script>
-
-
-
-
-
-
 <?= $this->endSection(); ?>
