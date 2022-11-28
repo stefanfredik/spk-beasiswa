@@ -6,10 +6,8 @@ use App\Models\MyUserModel;
 use CodeIgniter\Database\Seeder;
 use \Myth\Auth\Password;
 
-class UserSeeder extends Seeder
-{
-    public function run()
-    {
+class UserSeeder extends Seeder {
+    public function run() {
 
         $group = [
             [

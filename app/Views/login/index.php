@@ -84,43 +84,6 @@
     <script src="/sb/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/sb/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="/sb/js/sb-admin-2.min.js"></script>
-    <script src="/assets/sweetalert2/dist/sweetalert2.all.js"></script>
-    <script>
-        function login(target) {
-            target.preventDefault();
-
-            const username = $("#username").val();
-            const pass = $("#pass").val();
-
-            $.ajax({
-                url: '/login',
-                method: 'POST',
-                data: {
-                    username,
-                    pass
-                },
-
-                success: (res) => {
-                    console.log(res);
-                    if (res.status == 'error') {
-                        return Swal.fire({
-                            icon: 'error',
-                            title: 'Login Gagal',
-                            text: res.msg,
-                            showConfirmButton: false,
-                            timer: 3000,
-                        });
-                    }
-
-                    return window.location.href = '/home';
-                },
-                error: (err) => {
-                    console.log(err);
-                }
-            });
-        }
-    </script>
-
 </body>
 
 </html>
