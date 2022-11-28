@@ -9,46 +9,34 @@ use CodeIgniter\API\ResponseTrait;
 
 class Subkriteria extends BaseController
 {
+
     use ResponseTrait;
-    var $url = 'subkriteria';
-    var $point = "subkriteria";
 
     public function __construct()
     {
         $this->subkriteriaModel = new SubkriteriaModel();
         $this->kriteriaModel = new KriteriaModel();
+        $this->point = "subkriteria";
     }
 
     public function index()
     {
+        // dd($this->subkriteriaModel->findAllSubkriteria());
 
         $data = [
-            'url'       => [
-                'parent'    => $this->point
-            ],
-
-            'title' => 'Data Sub Kriteria'
+            'title' => 'Data Sub Kriteria',
+            'url'   => [
+                'parent' => 'subkriteria'
+            ]
         ];
 
         return view('/subkriteria/index', $data);
     }
 
-    public function tambah()
-    {
-        $data = [
-            'title' => 'Tambah Data Kriteria',
-            'kriteria' => $this->kriteriaModel->findAll(),
-            'url'   => $this->url
-        ];
-
-        return view('/subkriteria/tambah', $data);
-    }
     public function table()
     {
         $data = [
-            'title' => 'Data Sub Kriteria',
-            'dataSubkriteria' => $this->subkriteriaModel->findAllSubkriteria(),
-            'dataKriteria' => $this->kriteriaModel->findAll(),
+            'subkriteria' => $this->subkriteriaModel->findAllSubkriteria(),
             'url'       => [
                 'parent'    => $this->point
             ]
@@ -57,16 +45,14 @@ class Subkriteria extends BaseController
         return view('/subkriteria/table', $data);
     }
 
-    public function get($id)
+    public function tambah()
     {
         $data = [
-            'title' => 'Edit Data Penduduk',
-            'subkriteria'  => $this->subkriteriaModel->find($id),
-            'dataKriteria' => $this->kriteriaModel->findAll(),
-            'url'   => $this->url
+            'title' => "Tambah Data Sub Kriteria",
+            'kriteria' => $this->kriteriaModel->findAll()
         ];
 
-        return $this->respond(view('/subkriteria/edit', $data), 200);
+        return view('/subkriteria/tambah', $data);
     }
 
     public function save($id = null)
@@ -77,10 +63,10 @@ class Subkriteria extends BaseController
 
             $res = [
                 'status'    => 'success',
-                'msg'       => 'Berhasil Menambah Data.',
+                'msg'     => 'Berhasil menambah Data.',
             ];
 
-            return $this->respond($res, 200);
+            return $this->respond($res);
         } else {
             $data = $this->request->getPost();
             $this->subkriteriaModel->update($id, $data);
@@ -90,20 +76,32 @@ class Subkriteria extends BaseController
                 'msg'     => 'Berhasil Mengedit Data.',
             ];
 
-            return $this->respond($res, 200);
+            return $this->respond($res);
         }
     }
 
     public function delete($id)
     {
-
         $this->subkriteriaModel->delete($id);
 
         $res = [
             'status'    => 'success',
-            'msg'     => 'Data berhasil dihapus.',
+            'msg'     => 'Berhasil menghapus Data.',
         ];
 
         return $this->respond($res, 200);
+    }
+
+    public function get($id)
+    {
+        $data = [
+            "title" => "Edit Data Subkriteria",
+            "subkriteria" => $this->subkriteriaModel->find($id),
+            "dataKriteria" => $this->kriteriaModel->findAll()
+        ];
+
+        // dd($data);
+
+        return view("/subkriteria/edit", $data);
     }
 }

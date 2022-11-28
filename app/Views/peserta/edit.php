@@ -2,51 +2,47 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalLabel">Tambah <?= $title; ?></h5>
+                <h5 class="modal-title" id="modalLabel"><?= $title; ?></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+
             <form action="" method="" id="formEdit" onsubmit="simpanData(event,<?= $peserta['id']; ?>)">
                 <div class="modal-body">
-                    <div class="mb-3">
-                        <label class="form-label">Nama Siswa</label>
-                        <input disabled name="" type="text" class="form-control" value="<?= $peserta['nama_siswa']; ?>" required>
-                        <div id="" class="invalid-feedback"></div>
-                    </div>
-                    <hr>
-                    <div class="mb-3">
-                        <label class="form-label">Penghasilan</label>
-                        <input name="penghasilan" type="text" class="form-control" value="<?= $peserta['penghasilan']; ?>" required>
-                        <div id="" class="invalid-feedback"></div>
-                    </div>
-
-
-                    <div class="mb-3">
-                        <label class="form-label">Nilai</label>
-                        <input name="nilai" type="number" class="form-control" value="<?= $peserta['nilai']; ?>" required>
-                        <div id="" class="invalid-feedback"></div>
+                    <div class="row mb-2">
+                        <div class="col-md-4">
+                            <label class="form-label">Penduduk</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select class="form-control" name="id_penduduk" id="" required>
+                                <option value="">Pilih Penduduk</option>
+                                <?php foreach ($dataPenduduk as $dt) : ?>
+                                    <option <?= ($peserta['id_penduduk'] == $dt['id']) ? 'selected' : '' ?> value="<?= $dt['id']; ?>"><?= $dt['nama_lengkap']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
                     </div>
 
-                    <div class="mb-3">
-                        <label class="form-label">Tanggungan</label>
-                        <select class="form-control" name="tanggungan" id="" required>
-                            <option <?= ($peserta['tanggungan'] == 5) ? 'selected' : ''; ?> value="5">5 Atau Lebih</option>
-                            <option <?= ($peserta['tanggungan'] == 4) ? 'selected' : ''; ?> value="4">4</option>
-                            <option <?= ($peserta['tanggungan'] == 3) ? 'selected' : ''; ?> value="3">3</option>
-                            <option <?= ($peserta['tanggungan'] == 2) ? 'selected' : ''; ?> value="2">2</option>
-                            <option <?= ($peserta['tanggungan'] == 1) ? 'selected' : ''; ?> value="1">1</option>
-                        </select>
-                    </div>
+                    <?php foreach ($dataKriteria as $dt) : ?>
+                        <div class="row mb-2">
+                            <div class="col-md-4">
+                                <label class="form-label"><?= $dt['keterangan'] . ' - ' . $dt['kriteria']; ?></label>
+                            </div>
 
-                    <div class="mb-3">
-                        <label class="form-label">Yatim Piatu</label>
-                        <select class="form-control" name="yatimpiatu" id="" required>
-                            <option <?= ($peserta['yatimpiatu'] == "Yatim Piatu") ? 'selected' : ''; ?> value="Yatim Piatu">Yatim Piatu</option>
-                            <option <?= ($peserta['yatimpiatu'] == "Yatim") ? 'selected' : ''; ?> value="Yatim">Yatim</option>
-                            <option <?= ($peserta['yatimpiatu'] == "Piatu") ? 'selected' : ''; ?> value="Piatu">Piatu</option>
-                            <option <?= ($peserta['yatimpiatu'] == "Lengkap") ? 'selected' : ''; ?> value="Lengkap">Lengkap</option>
-                        </select>
-                    </div>
-
+                            <div class="col-md-8">
+                                <select class="form-control" name="<?= 'k_' . $dt['id'] ?>" id="" required>
+                                    <option value="">Pilih Subkriteria</option>
+                                    <?php
+                                    $k = 'k_' . $dt['id'];
+                                    foreach ($dataSubkriteria as $sk) :
+                                        if ($dt['id'] == $sk['id_kriteria']) :
+                                    ?>
+                                            <option <?= @($peserta[$k] == $sk['id']) ? 'selected' : '' ?> value="<?= $sk['id']; ?>"><?= $sk['subkriteria']; ?></option>
+                                    <?php endif;
+                                    endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>

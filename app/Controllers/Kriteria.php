@@ -4,19 +4,32 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\KriteriaModel;
-use App\Models\UserModel;
+use App\Models\PesertaModel;
 use CodeIgniter\API\ResponseTrait;
 
-class Kriteria extends BaseController {
+class Kriteria extends BaseController
+{
     use ResponseTrait;
 
-    public function __construct() {
-        $this->KriteriaModel = new KriteriaModel();
+    private $url = 'kriteria';
+    private $dir = 'blt';
+    private $table = 'kriteria';
+
+    public function __construct()
+    {
+        $this->kriteriaModel = new KriteriaModel();
+        $this->Peserta = new PesertaModel();
+        $this->forge = \Config\Database::forge();
+
         $this->point =  'kriteria';
     }
 
-    public function index() {
+    public function index()
+    {
+        // dd($this->kriteriaModel->orderBy('id', 'desc')->first()['id']);
         $data = [
+            'url' => $this->url,
+            'table' => $this->table,
             'title' => 'Data Kriteria',
             'url'   => [
                 'parent' => 'kriteria'
@@ -26,9 +39,22 @@ class Kriteria extends BaseController {
         return view('/kriteria/index', $data);
     }
 
-    public function table() {
+    public function tambah()
+    {
         $data = [
-            'kriteria' => $this->KriteriaModel->findAll(),
+            'title' => 'Tambah Data Kriteria',
+            'url'   => $this->url
+        ];
+
+        return view('/kriteria/tambah', $data);
+    }
+    public function table()
+    {
+        $data = [
+            'title' => 'Data Kriteria',
+            'url'   => $this->url,
+            'table' => $this->table,
+            'kriteria' => $this->kriteriaModel->orderBy('keterangan', 'ASC')->findAll(),
             'url'       => [
                 'parent'    => $this->point
             ]
@@ -37,55 +63,68 @@ class Kriteria extends BaseController {
         return view('/kriteria/table', $data);
     }
 
-    public function tambah() {
+    public function get($id)
+    {
         $data = [
-            'title' => "Tambah Data Kriteria"
+            'title' => 'Edit Data Penduduk',
+            'kriteria'  => $this->kriteriaModel->find($id),
+            'url'   => $this->url
         ];
 
-        return view('/kriteria/tambah', $data);
+        return $this->respond(view('/kriteria/edit', $data), 200);
     }
 
-    public function save($id = null) {
+    public function save($id = null)
+    {
         if ($id == null) {
             $data = $this->request->getPost();
-            $this->KriteriaModel->save($data);
+            $this->kriteriaModel->save($data);
 
+            $result = $this->kriteriaModel->orderBy('id', 'desc')->first();
+            $column = 'k_' . $result['id'];
+
+            $field = [
+                $column => [
+                    'type' => 'INT'
+                ]
+            ];
+
+            // return $this->respond($field, 200);
+
+            $this->forge->addColumn('peserta', $field);
             $res = [
                 'status'    => 'success',
                 'msg'     => 'Berhasil menambah Data.',
             ];
 
-            return $this->respond($res);
+            return $this->respond($res, 200);
         } else {
             $data = $this->request->getPost();
-            $this->KriteriaModel->update($id, $data);
+            $this->kriteriaModel->update($id, $data);
 
             $res = [
-                'status'    => 'success',
-                'msg'     => 'Berhasil Mengedit Data.',
+                'status' => 'success',
+                'msg'   => 'Data User Berhasil Diupdate.',
+                'data'  => $data
             ];
 
-            return $this->respond($res);
+            return $this->respond($res, 200);
         }
     }
 
-    public function delete($id) {
-        $this->KriteriaModel->delete($id);
+
+    public function delete($id)
+    {
+        $this->kriteriaModel->delete($id);
+
+        $column = "k_" . $id;
+        $this->forge->dropColumn('peserta', $column);
 
         $res = [
             'status'    => 'success',
-            'msg'     => 'Berhasil menghapus Data.',
+            'msg'     => 'Data berhasil dihapus.',
         ];
 
         return $this->respond($res, 200);
-    }
-
-    public function get($id) {
-        $data = [
-            "title" => "Edit Data User",
-            "kriteria" => $this->KriteriaModel->find($id)
-        ];
-
-        return view("/kriteria/edit", $data);
     }
 }

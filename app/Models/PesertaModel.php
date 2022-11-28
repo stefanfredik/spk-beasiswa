@@ -4,7 +4,8 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class PesertaModel extends Model {
+class PesertaModel extends Model
+{
     protected $DBGroup          = 'default';
     protected $table            = 'peserta';
     protected $primaryKey       = 'id';
@@ -12,25 +13,25 @@ class PesertaModel extends Model {
     protected $insertID         = 0;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
-    protected $allowedFields    = ['id', 'nisn', 'penghasilan', 'tanggungan', 'nilai', 'yatimpiatu',];
+    protected $protectFields    = false;
+    protected $allowedFields    = ['id', 'id_peserta'];
 
-    function findAllPeserta() {
-        $db = \Config\Database::connect();
-        $builder = $db->table('peserta');
-        $builder->select('peserta.*');
-        $builder->select('siswa.nama_siswa');
-        $builder->join('siswa', 'peserta.nisn = siswa.nisn');
-        return $builder->get()->getResultArray();
+
+    public function findAllPeserta()
+    {
+        $this->select('peserta.id as id_peserta');
+        $this->select('siswa.*');
+        $this->select('peserta.*');
+        $this->join('siswa', 'siswa.id = peserta.id_siswa');
+        return $this->findAll();
     }
 
-    function findPeserta($id) {
-        $db = \Config\Database::connect();
-        $builder = $db->table('peserta');
-        $builder->select('peserta.*');
-        $builder->select('siswa.nama_siswa');
-        $builder->where('peserta.id', $id);
-        $builder->join('siswa', 'peserta.nisn = siswa.nisn');
-        return $builder->get()->getFirstRow('array');
-    }
+    // public function findDataBlt($id)
+    // {
+    //     $this->select('datablt.id as id_datablt');
+    //     $this->select('penduduk.*');
+    //     $this->select('datablt.*');
+    //     $this->join('penduduk', 'penduduk.id = datablt.id_penduduk');
+    //     return $this->find($id);
+    // }
 }

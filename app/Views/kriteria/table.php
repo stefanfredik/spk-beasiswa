@@ -4,8 +4,9 @@
             <tr>
                 <th>No</th>
                 <th>Kriteria</th>
-                <th>Bobot</th>
+                <th>Nilai</th>
                 <th>Keterangan</th>
+                <th>Cost/Benefit</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -16,8 +17,9 @@
                 <tr>
                     <td><?= $no++; ?></td>
                     <td><?= $dt['kriteria']; ?></td>
-                    <td><?= $dt['bobot']; ?></td>
+                    <td><?= $dt['nilai']; ?></td>
                     <td><?= $dt["keterangan"]; ?></td>
+                    <td><?= $dt["type"]; ?></td>
                     <td style="text-align: center" width="120px">
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <a onclick="hapus(event,this)" class="btn btn-danger" href="/<?= $url['parent']; ?>/delete/<?= $dt['id']; ?>"><i class="bi bi-trash mr-2"></i></a>
