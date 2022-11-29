@@ -9,7 +9,7 @@
                 <div class="modal-body">
                     <div class="row mb-2">
                         <div class="col-md-4">
-                            <label class="form-label">Penduduk</label>
+                            <label class="form-label">Pilih Siswa</label>
                         </div>
 
                         <div class="col-md-8">

@@ -44,7 +44,7 @@ class Peserta extends BaseController {
             'dataSubkriteria' => $this->subkriteriaModel->findAll(),
         ];
 
-        dd($data);
+        // dd($data);
 
         return view('/peserta/tambah', $data);
     }
