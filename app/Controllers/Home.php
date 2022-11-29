@@ -13,6 +13,7 @@ class Home extends BaseController {
     public function index() {
         $data = [
             'title' => 'Halaman Utama',
+            'jumlahUser' => $this->siswaModel->countAll(),
             'jumlahSiswa' => $this->siswaModel->countAll(),
             'jumlahPeserta' => $this->pesertaModel->countAll(),
             'url'   => [

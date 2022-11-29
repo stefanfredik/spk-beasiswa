@@ -3,7 +3,7 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>NIK</th>
+                <th>NISN</th>
                 <th>Nama</th>
                 <th>Jenis Kelamin</th>
                 <?php foreach ($dataKriteria as $dt) : ?>

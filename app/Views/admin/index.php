@@ -12,7 +12,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Data User</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlahSiswa . " User" ?></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= $jumlahUser . " User" ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="bi bi-people-fill fa-2x"></i>
@@ -33,7 +33,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-white text-uppercase mb-1">
                                 Data Siswa</div>
-                            <div class="h5 mb-0 font-weight-bold text-white"><?= $jumlahPeserta . " Siswa"; ?> </div>
+                            <div class="h5 mb-0 font-weight-bold text-white"><?= $jumlahSiswa . " Siswa"; ?> </div>
                         </div>
                         <div class="col-auto">
                             <i class="bi bi-person-check-fill fa-2x"></i>

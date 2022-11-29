@@ -12,7 +12,7 @@ use CodeIgniter\API\ResponseTrait;
 class Peserta extends BaseController {
     use ResponseTrait;
 
-    private $url = 'datapeserta';
+    private $url = 'peserta';
     private $title = 'Data Peserta';
     private $jumlahKriteria = 0;
     private $point = 'peserta';
@@ -26,8 +26,6 @@ class Peserta extends BaseController {
     }
 
     public function index() {
-        // dd($this->pendudukModel->findAllNonBantuan());
-
         $data = [
             'title' => 'Data Peserta',
             'url'   => [
@@ -41,7 +39,6 @@ class Peserta extends BaseController {
     public function tambah() {
         $data = [
             'title' => 'Tambah Data Peserta',
-            'url'   => $this->url,
             'dataSiswa' => $this->siswaModel->findAll(),
             'dataKriteria' => $this->kriteriaModel->findAll(),
             'dataSubkriteria' => $this->subkriteriaModel->findAll(),
@@ -78,13 +75,10 @@ class Peserta extends BaseController {
             'url'   => $this->url
         ];
 
-        // dd($data);
-
         return $this->respond(view('/peserta/edit', $data), 200);
     }
 
     public function detail($id) {
-
         $data = [
 
             'dataKriteria'  => $this->kriteriaModel->where('jenis_bantuan', $this->jenisBantuan)->findAll(),
@@ -95,12 +89,11 @@ class Peserta extends BaseController {
         ];
 
         $data['title'] = 'Detail ' . $data['peserta']['nama_lengkap'];
-
         return $this->respond(view('/peserta/detail', $data), 200);
     }
 
     public function save($id = null) {
-        if ($id = null) {
+        if ($id == null) {
             $data = $this->request->getPost();
             $this->pesertaModel->save($data);
 
@@ -124,26 +117,8 @@ class Peserta extends BaseController {
         }
     }
 
-
-    public function postSaveedit($id) {
-        $data = $this->request->getPost();
-        $this->bltModel->update($id, $data);
-
-        $res = [
-            'status' => 'success',
-            'msg'   => 'Data User Berhasil Diupdate.',
-            'data'  => $data
-        ];
-
-        return $this->respond($res, 200);
-    }
-
-
-
     public function delete($id) {
-
         $this->pesertaModel->delete($id);
-
         $res = [
             'status'    => 'success',
             'msg'     => 'Data berhasil dihapus.',

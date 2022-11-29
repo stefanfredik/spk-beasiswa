@@ -41,7 +41,7 @@ class User extends BaseController {
         if ($id == null) {
             $rules = [
                 'username'  => [
-                    'rules'  => 'required|is_unique[user.username]',
+                    'rules'  => 'required|is_unique[users.username]',
                     'errors' => [
                         'is_unique' => 'Username telah digunakan.'
                     ]
