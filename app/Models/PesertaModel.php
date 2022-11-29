@@ -33,8 +33,9 @@ class PesertaModel extends Model {
     }
 
     public function findAllNonPeserta() {
+        $this->select('peserta.*');
         $this->select("siswa.*");
-        $this->join("siswa", "peserta.id_siswa = siswa.id", "left")->where("peserta.id", NULL);
+        $this->join("siswa", 'siswa.id = peserta.id_siswa', "right")->where('peserta.id', null);
         return $this->findAll();
     }
 }
