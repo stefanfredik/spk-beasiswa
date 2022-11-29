@@ -15,15 +15,16 @@
     </li>
 
     <hr class="sidebar-divider">
-
-    <div class="sidebar-heading">
-        Master Data
-    </div>
-
-    <li class="nav-item <?= @$url['parent'] == 'laporan' ? 'active' : ''; ?>">
-        <a class="nav-link " href="/laporan">
+    <li class="nav-item <?= url_is('/laporan/peserta') ? 'active' : ''; ?>">
+        <a class="nav-link " href="/laporan/peserta">
             <i class="bi bi-table"></i>
-            <span>Data Laporan</span></a>
+            <span>Laporan Peserta</span></a>
+    </li>
+
+    <li class="nav-item <?= url_is('/laporan/siswa') ? 'active' : ''; ?>">
+        <a class="nav-link " href="/laporan/siswa">
+            <i class="bi bi-table"></i>
+            <span>Laporan Siswa</span></a>
     </li>
 
     <hr>

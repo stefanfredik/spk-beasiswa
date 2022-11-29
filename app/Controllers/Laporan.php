@@ -39,7 +39,7 @@ class Laporan extends BaseController {
         $moora = new MooraLib($peserta, $kriteria, $subkriteria, $kelayakan);
 
         $data = [
-            'title'         => 'Data Laporan',
+            'title'         => 'Laporan Peserta Beasiswa',
             'peserta'       => $moora->getAllPeserta(),
             'kelayakan'     => $kelayakan,
             'tahap'        => $this->tahapModel->findAll(),
@@ -48,6 +48,23 @@ class Laporan extends BaseController {
             ]
         ];
         return view('laporan/index', $data);
+    }
+
+
+    public function peserta() {
+        return $this->index();
+    }
+
+    public function siswa() {
+        $data = [
+            'title' => 'Laporan Data Siswa',
+            'dataSiswa' => $this->siswaModel->findAll(),
+            'url'   => [
+                'parent'    => 'siswa'
+            ]
+        ];
+
+        return view('/laporan/laporanSiswa', $data);
     }
 
     public function cetak() {
@@ -70,6 +87,24 @@ class Laporan extends BaseController {
         ];
 
         $html = view("/laporan/cetak", $data);
+        $pdf->loadHtml($html);
+        $pdf->setPaper('A4', 'potrait');
+        $pdf->render();
+        return $pdf->stream();
+    }
+
+    public function cetakLaporanSiswa() {
+        $pdf = new Dompdf();
+
+        $data = [
+            'title' => 'Laporan Data Siswa tahun 2022',
+            'dataSiswa' => $this->siswaModel->findAll(),
+            'url'   => [
+                'parent'    => 'siswa'
+            ]
+        ];
+
+        $html = view("/laporan/cetakSiswa", $data);
         $pdf->loadHtml($html);
         $pdf->setPaper('A4', 'potrait');
         $pdf->render();

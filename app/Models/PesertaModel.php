@@ -32,12 +32,9 @@ class PesertaModel extends Model {
         return $this->find($id);
     }
 
-    // public function findDataBlt($id)
-    // {
-    //     $this->select('datablt.id as id_datablt');
-    //     $this->select('penduduk.*');
-    //     $this->select('datablt.*');
-    //     $this->join('penduduk', 'penduduk.id = datablt.id_penduduk');
-    //     return $this->find($id);
-    // }
+    public function findAllNonPeserta() {
+        $this->select("siswa.*");
+        $this->join("siswa", "peserta.id_siswa = siswa.id", "left")->where("peserta.id", NULL);
+        return $this->findAll();
+    }
 }

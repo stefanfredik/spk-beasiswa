@@ -39,7 +39,7 @@ class Peserta extends BaseController {
     public function tambah() {
         $data = [
             'title' => 'Tambah Data Peserta',
-            'dataSiswa' => $this->siswaModel->findAll(),
+            'dataSiswa' => $this->pesertaModel->findAllNonPeserta(),
             'dataKriteria' => $this->kriteriaModel->findAll(),
             'dataSubkriteria' => $this->subkriteriaModel->findAll(),
         ];
