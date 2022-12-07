@@ -4,8 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class SubkriteriaModel extends Model
-{
+class SubkriteriaModel extends Model {
     protected $DBGroup          = 'default';
     protected $table            = 'subkriteria';
     protected $primaryKey       = 'id';
@@ -17,12 +16,12 @@ class SubkriteriaModel extends Model
     protected $allowedFields    = ['id', 'id_kriteria', 'subkriteria', 'nilai'];
 
 
-    public function findAllSubkriteria()
-    {
+    public function findAllSubkriteria() {
         $this->select('subkriteria.*');
         $this->select('kriteria.kriteria');
         $this->join('kriteria', 'kriteria.id = subkriteria.id_kriteria');
         $this->orderBy('id_kriteria', 'ASC');
+        $this->orderBy('subkriteria.nilai', 'desc');
         return parent::findAll();
     }
 }
