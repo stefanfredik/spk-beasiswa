@@ -17,6 +17,7 @@
                                 <th>NISN</td>
                                 <th>Nama Siswa</th>
                                 <th>Jenis Kelamin</td>
+                                <th>Kelas</td>
                                 <th>Alamat</td>
                             </tr>
                         </thead>
@@ -31,6 +32,7 @@
                                     <td><?= $ps['nisn'] ?></td>
                                     <td><?= $ps['nama_siswa'] ?></td>
                                     <td><?= $ps['jenis_kelamin'] ?></td>
+                                    <td><?= $ps['kelas'] ?></td>
                                     <td><?= $ps['alamat'] ?></td>
                                 </tr>
                             <?php endforeach; ?>

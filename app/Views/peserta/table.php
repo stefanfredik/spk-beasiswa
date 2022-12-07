@@ -6,6 +6,7 @@
                 <th>NISN</th>
                 <th>Nama</th>
                 <th>Jenis Kelamin</th>
+                <th>Kelas</th>
                 <?php foreach ($dataKriteria as $dt) : ?>
                     <th class="align-middle"><?= $dt['keterangan'] ?></th>
                 <?php endforeach; ?>
@@ -22,6 +23,7 @@
                     <td><?= $dt['nisn']; ?></td>
                     <td><?= $dt['nama_siswa']; ?></td>
                     <td><?= $dt['jenis_kelamin']; ?></td>
+                    <td><?= $dt['kelas']; ?></td>
 
                     <?php foreach ($dataKriteria as $dk) :
                         $k = 'k_' . $dk['id'];

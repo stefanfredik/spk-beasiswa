@@ -17,6 +17,7 @@
                                 <th>NISN</td>
                                 <th>Nama Siswa</th>
                                 <th>Jenis Kelamin</td>
+                                <th>Kelas</td>
                                 <th>Alamat</td>
                                 <th>Nilai Akhir</td>
                                     <!-- <th>Status Layak</th> -->
@@ -35,6 +36,7 @@
                                     <td><?= $ps['nisn'] ?></td>
                                     <td><?= $ps['nama_siswa'] ?></td>
                                     <td><?= $ps['jenis_kelamin'] ?></td>
+                                    <td><?= $ps['kelas'] ?></td>
                                     <td><?= $ps['alamat'] ?></td>
                                     <td><?= $ps['kriteria_nilai']; ?></td>
                                     <td>

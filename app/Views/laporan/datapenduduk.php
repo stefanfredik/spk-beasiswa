@@ -8,6 +8,7 @@
                 <th class="text-center">Jenis Kelamin</th>
                 <th class="text-center">Tanggal Lahir</th>
                 <th class="text-center">Tempat Lahir</th>
+                <th class="text-center">Kelas</th>
                 <th class="text-center">Alamat</th>
                 <th class="text-center">RT</th>
                 <th class="text-center">RW</th>
