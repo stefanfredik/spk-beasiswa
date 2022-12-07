@@ -4,8 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class SiswaModel extends Model
-{
+class SiswaModel extends Model {
     protected $DBGroup          = 'default';
     protected $table            = 'siswa';
     protected $primaryKey       = 'id';
@@ -14,7 +13,7 @@ class SiswaModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ["nisn", "nama_siswa", "jenis_kelamin", "alamat"];
+    protected $allowedFields    = ["nisn", "nama_siswa", "jenis_kelamin", 'kelas', "alamat"];
 
     // Dates
     // protected $useTimestamps = false;

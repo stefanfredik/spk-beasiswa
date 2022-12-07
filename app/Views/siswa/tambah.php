@@ -32,6 +32,12 @@
                         <input name="alamat" type="text" class="form-control" required>
                     </div>
 
+                    <div class="mb-3">
+                        <label class="form-label">Kelas</label>
+                        <input name="kelas" type="text" class="form-control" required>
+                    </div>
+
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>

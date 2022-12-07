@@ -27,6 +27,11 @@
                     </div>
 
                     <div class="mb-3">
+                        <label class="form-label">Kelas</label>
+                        <input name="kelas" type="text" class="form-control" required value="<?= $siswa["kelas"]; ?>">
+                    </div>
+
+                    <div class="mb-3">
                         <label class="form-label">Alamat</label>
                         <input name="alamat" type="text" class="form-control" required value="<?= $siswa["alamat"]; ?>">
                     </div>

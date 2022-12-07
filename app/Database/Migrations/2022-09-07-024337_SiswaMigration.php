@@ -26,6 +26,10 @@ class SiswaMigration extends Migration {
             'alamat'    => [
                 'type' => 'VARCHAR',
                 'constraint'  => 30
+            ],
+            'kelas'    => [
+                'type' => 'VARCHAR',
+                'constraint'  => 30
             ]
         ];
 

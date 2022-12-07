@@ -6,6 +6,7 @@
                 <th>NISN</th>
                 <th>Nama Siswa</th>
                 <th>Jenis Kelamin</th>
+                <th>Kelas</th>
                 <th>Alamat</th>
                 <th>Action</th>
             </tr>
@@ -19,6 +20,7 @@
                     <td><?= $dt['nisn']; ?></td>
                     <td><?= ucwords($dt['nama_siswa']); ?></td>
                     <td><?= ucwords($dt["jenis_kelamin"]); ?></td>
+                    <td><?= ucwords($dt['kelas']); ?></td>
                     <td><?= ucwords($dt['alamat']); ?></td>
                     <td style="text-align: center" width="120px">
                         <div class="btn-group" role="group" aria-label="Basic example">
