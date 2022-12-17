@@ -89,7 +89,7 @@ class User extends BaseController {
         } else {
             $rules = [
                 'username'  => [
-                    'rules'  => 'is_unique[user.username]',
+                    'rules'  => 'is_unique[users.username]',
                     'errors' => [
                         'is_unique' => 'Username telah digunakan.'
                     ]
@@ -116,6 +116,7 @@ class User extends BaseController {
 
             $data = $this->request->getPost();
             $this->UserModel->update($id, $data);
+            $this->UserModel->updateGroup($id, $this->request->getPost("jabatan"));
 
             $res = [
                 'status'    => 'success',
@@ -128,7 +129,7 @@ class User extends BaseController {
 
     public function tambah() {
         $data = [
-            'title' => "Data Siswa",
+            'title' => "Data User",
             'role' => $this->UserModel->findAllRole()
         ];
 

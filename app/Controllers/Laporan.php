@@ -64,7 +64,7 @@ class Laporan extends BaseController {
             ]
         ];
 
-        return view('/laporan/laporanSiswa', $data);
+        return view('/laporan/siswa/index', $data);
     }
 
     public function cetak() {

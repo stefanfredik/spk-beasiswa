@@ -26,13 +26,13 @@
         Master Data
     </div>
 
-    <li class="nav-item <?= @$url['parent'] == 'user' ? 'active' : ''; ?>">
+    <li class="nav-item <?= url_is("/user")  ? 'active' : ''; ?>">
         <a class=" nav-link" href="/user">
             <i class="bi bi-people-fill"></i>
             <span>Data User</span></a>
     </li>
 
-    <li class="nav-item <?= @$url['parent'] == 'siswa' ? 'active' : ''; ?>">
+    <li class="nav-item <?= url_is("/siswa")  ? 'active' : ''; ?>">
         <a class="nav-link" href="/siswa">
             <i class="bi bi-people"></i>
             <span>Data Siswa</span></a>
@@ -52,7 +52,7 @@
     </li>
 
 
-    <li class="nav-item <?= @$url['parent'] == 'tahapbeasiswa' ? 'active' : ''; ?>">
+    <li class="nav-item <?= url_is("/tahapbeasiswa") ? 'active' : ''; ?>">
         <a class="nav-link" href="/tahapbeasiswa">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Tahap Beasiswa</span></a>
@@ -61,13 +61,13 @@
 
     <hr class="sidebar-divider">
 
-    <li class="nav-item <?= @$url['parent'] == 'peserta' ? 'active' : ''; ?>">
+    <li class="nav-item <?= url_is("/peserta")  ? 'active' : ''; ?>">
         <a class="nav-link" href="/peserta">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Data Peserta</span></a>
     </li>
 
-    <li class="nav-item <?= $url['parent'] == 'moora' ? 'active' : ''; ?>">
+    <li class="nav-item <?= url_is("/moora")  ? 'active' : ''; ?>">
         <a class="nav-link" href="/moora">
             <i class="bi bi-card-checklist"></i>
             <span>Tabel Moora</span></a>
@@ -79,7 +79,7 @@
             <span>Data Kelayakan</span></a>
     </li> -->
 
-    <li class="nav-item <?= @$url['parent'] == 'keputusan' ? 'active' : ''; ?>">
+    <li class="nav-item <?= url_is("/keputusan") ? 'active' : ''; ?>">
         <a class="nav-link " href="/keputusan">
             <i class="bi bi-shield-check"></i>
             <span>Data Keputusan</span></a>
@@ -87,17 +87,24 @@
 
 
 
-    <li class="nav-item <?= @$url['parent'] == 'laporan' ? 'active' : ''; ?>">
-        <a class="nav-link " href="/laporan">
-            <i class="bi bi-table"></i>
-            <span>Data Laporan</span></a>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Laporan</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item <?= url_is("/laporan/siswa") ? 'active' : ''; ?>" href="/laporan/siswa">Laporan Data Siswa</a>
+                <a class="collapse-item <?= url_is("/laporan/peserta") ? 'active' : ''; ?> " href="/laporan/peserta"">Laporan Data Peserta</a>
+            </div>
+        </div>
     </li>
 
     <hr>
-    <li class="nav-item">
-        <a class="nav-link " href="/logout">
-            <i class="bi bi-box-arrow-left"></i>
-            <span>Logout</span></a>
+    <li class=" nav-item">
+                    <a class="nav-link " href="/logout">
+                        <i class="bi bi-box-arrow-left"></i>
+                        <span>Logout</span></a>
     </li>
 
 

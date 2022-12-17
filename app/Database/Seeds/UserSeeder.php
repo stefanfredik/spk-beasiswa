@@ -12,24 +12,14 @@ class UserSeeder extends Seeder {
         $group = [
             [
                 "name" => "Admin",
-                "description" => "Admin Groups",
+                "description" => "Admin",
             ],
             [
-                "name" => "Kepala Sekolah",
+                "name" => "kepala-sekolah",
                 "description" => "Kepala Sekolah",
             ]
         ];
 
-        // $this->db->query('INSERT INTO auth_groups (name, description) VALUES(:name:, :description:)', $group);
-
-        // $group = [
-        //     "name" => "Kepala Sekolah",
-        //     "description" => "Kepala Sekolah",
-        // ];
-
-        // $this->db->query('INSERT INTO auth_groups (name, description) VALUES(:name:, :description:)', $group);
-
-        // Using Query Builder
         $this->db->table('auth_groups')->insertBatch($group);
 
         $user = [
