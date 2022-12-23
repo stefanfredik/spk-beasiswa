@@ -82,9 +82,9 @@
             </div>
 
             <div>
-                <p style="font-weight: bold;">(Agustinus Bayuwarta, S. Pd)</p>
+                <p style="font-weight: bold; margin: 0;">(Agustinus Bayuwarta, S. Pd)</p>
                 <p style="margin: 0;">Pembina TK I/IV B</p>
-                <p>NIP 19700823 199802 1 0002</p>
+                <p style="margin: 0;">NIP 19700823 199802 1 0002</p>
             </div>
         </div>
     </div>
