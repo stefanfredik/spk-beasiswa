@@ -31,8 +31,12 @@
                             foreach ($peserta as $ps) :
                             ?>
                                 <tr>
-                                    <td><?= $no++; ?></td>
-                                    <td class="text-center"><?= $rank++; ?></td>
+                                    <td width="50px"><?= $no++; ?></td>
+                                    <td class="text-center ">
+                                        <div class="fw-bold p-3 border rounded-pill badge text-primary">
+                                            <?= $rank++; ?>
+                                        </div>
+                                    </td>
                                     <td><?= $ps['nisn'] ?></td>
                                     <td><?= $ps['nama_siswa'] ?></td>
                                     <td><?= $ps['jenis_kelamin'] ?></td>
