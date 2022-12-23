@@ -29,7 +29,7 @@
             flex-direction: row;
             justify-content: center; */
             text-align: center;
-            margin-left: 200px;
+            margin-left: 400px;
         }
 
         .title {
@@ -41,7 +41,7 @@
 
 <body>
     <div class="container">
-        <div style="margin-bottom: 100px; text-align: center; ">
+        <div style="text-align: center; ">
             <?php
             $srcLogo = APPPATH . '../public/assets/img/logo.png';
             $srcNtt = APPPATH . '../public/assets/img/ntt.png';
@@ -50,31 +50,35 @@
             $imageDataNtt   = base64_encode(file_get_contents($srcNtt));
 
             $renderLogo     = 'data:' . mime_content_type($srcLogo) . ';base64,' . $imageDataLogo;
-            $imageDataNtt   = 'data:' . mime_content_type($srcNtt) . ';base64,' . $imageDataNtt;
+            $renderDataNtt   = 'data:' . mime_content_type($srcNtt) . ';base64,' . $imageDataNtt;
             ?>
 
 
 
             <div style="display: inline-block;">
-                <img width="70px" src="<?= $renderLogo; ?>" alt="">
+                <img width="60px" src="<?= $renderDataNtt; ?>" alt="">
             </div>
 
-            <div style="display: inline-block; text-align: center; margin: 0 100px;">
-                <p style="margin: 0; font-weight: bold;">Pemerintah Provinsi Nusa Tenggara Timur</p>
-                <p style="margin: 0; font-weight: bold;">Dinas Pendidikan dan Kebudayaan</p>
-                <p style="margin: 0; font-weight: bold;">SMA Negeri 2 Komodo</p>
+            <div style="display: inline-block; text-align: center; margin: 0 80px;">
+                <p style="margin: 0; font-weight: bold;">PEMERINTAH PROVINSI NUSA TENGGARA TIMUR</p>
+                <p style="margin: 0; font-weight: bold;">DINAS PENDIDIKAN DAN KEBUDAYAAN</p>
+                <p style="margin: 0; font-weight: bold;">SMA NEGERI 2 KOMODO</p>
                 <p style="margin: 0; font-size: small;">Jalan Lintas Selatan Desa Nggorang</p>
             </div>
 
             <div style="display: inline-block;">
-                <img width="70px" src="<?= $imageDataNtt; ?>" alt="">
+                <img width="60px" src="<?= $renderLogo; ?>" alt="">
             </div>
+        </div>
+        <hr>
 
+        <div>
 
+            <p style="text-align: right;"><?php echo "Nggorang, " . date('d-m-Y'); ?></p>
             <h3 class="head"><?= $title; ?></h3>
         </div>
 
-        <hr>
+
         <?= $this->renderSection("table"); ?>
         <div class="footer">
             <div class="title">
