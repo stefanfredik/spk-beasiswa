@@ -29,7 +29,7 @@
             flex-direction: row;
             justify-content: center; */
             text-align: center;
-            margin-left: 490px;
+            margin-left: 200px;
         }
 
         .title {

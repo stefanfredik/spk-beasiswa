@@ -78,7 +78,7 @@ class Laporan extends BaseController {
         $moora = new MooraLib($peserta, $kriteria, $subkriteria, $kelayakan);
 
         $data = [
-            'title'         => 'Data Laporan',
+            'title'         => 'DAFTAR NAMA PENERIMA BANTUAN SISWA MISKIN (BSM) TAHAP 1, 2, 3, & 4 TAHUN 2021',
             'peserta'       => $moora->getAllPeserta(),
             'kelayakan'     => $kelayakan,
             'tahap'        => $this->tahapModel->findAll(),
