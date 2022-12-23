@@ -39,6 +39,11 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Home::index');
 // $routes->get('/logout', 'Login::logout');
 
+
+$routes->group("laporan", static function ($router) {
+    $router->get("siswa/cetak", "Laporan::cetakSiswa");
+    $router->get("peserta/cetak", "Laporan::cetakPeserta");
+});
 /*
  * --------------------------------------------------------------------
  * Additional Routing

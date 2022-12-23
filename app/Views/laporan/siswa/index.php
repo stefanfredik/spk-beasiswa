@@ -1,7 +1,7 @@
 <?= $this->extend('template/index'); ?>
 <?= $this->section("content"); ?>
 
-<a target="__blank" href="/laporan/cetakLaporanSiswa" href="" class="btn btn-primary my-2"><i class="bi bi-printer mr-2"></i>Cetak Laporan</a>
+<a target="__blank" href="/laporan/siswa/cetak" href="" class="btn btn-primary my-2"><i class="bi bi-printer mr-2"></i>Cetak Laporan</a>
 <div class="row">
     <div class="col">
         <div class="card  shadow">

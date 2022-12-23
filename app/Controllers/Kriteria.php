@@ -7,16 +7,14 @@ use App\Models\KriteriaModel;
 use App\Models\PesertaModel;
 use CodeIgniter\API\ResponseTrait;
 
-class Kriteria extends BaseController
-{
+class Kriteria extends BaseController {
     use ResponseTrait;
 
     private $url = 'kriteria';
     private $dir = 'blt';
     private $table = 'kriteria';
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->kriteriaModel = new KriteriaModel();
         $this->Peserta = new PesertaModel();
         $this->forge = \Config\Database::forge();
@@ -24,8 +22,7 @@ class Kriteria extends BaseController
         $this->point =  'kriteria';
     }
 
-    public function index()
-    {
+    public function index() {
         // dd($this->kriteriaModel->orderBy('id', 'desc')->first()['id']);
         $data = [
             'url' => $this->url,
@@ -39,8 +36,7 @@ class Kriteria extends BaseController
         return view('/kriteria/index', $data);
     }
 
-    public function tambah()
-    {
+    public function tambah() {
         $data = [
             'title' => 'Tambah Data Kriteria',
             'url'   => $this->url
@@ -48,8 +44,7 @@ class Kriteria extends BaseController
 
         return view('/kriteria/tambah', $data);
     }
-    public function table()
-    {
+    public function table() {
         $data = [
             'title' => 'Data Kriteria',
             'url'   => $this->url,
@@ -63,10 +58,9 @@ class Kriteria extends BaseController
         return view('/kriteria/table', $data);
     }
 
-    public function get($id)
-    {
+    public function get($id) {
         $data = [
-            'title' => 'Edit Data Penduduk',
+            'title' => 'Edit Data Kriteria',
             'kriteria'  => $this->kriteriaModel->find($id),
             'url'   => $this->url
         ];
@@ -74,8 +68,7 @@ class Kriteria extends BaseController
         return $this->respond(view('/kriteria/edit', $data), 200);
     }
 
-    public function save($id = null)
-    {
+    public function save($id = null) {
         if ($id == null) {
             $data = $this->request->getPost();
             $this->kriteriaModel->save($data);
@@ -113,8 +106,7 @@ class Kriteria extends BaseController
     }
 
 
-    public function delete($id)
-    {
+    public function delete($id) {
         $this->kriteriaModel->delete($id);
 
         $column = "k_" . $id;

@@ -34,7 +34,12 @@
 
                     <div class="mb-3">
                         <label class="form-label">Kelas</label>
-                        <input name="kelas" type="text" class="form-control" required>
+                        <select class="form-control" name="kelas" id="">
+                            <option value="">Pilih Kelas</option>
+                            <option value="X">X</option>
+                            <option value="XI">XI</option>
+                            <option value="XII">XII</option>
+                        </select>
                     </div>
 
 

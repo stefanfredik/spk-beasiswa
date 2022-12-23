@@ -12,6 +12,7 @@ use App\Models\SiswaModel;
 use App\Models\SubkriteriaModel;
 use App\Models\Tahapbeasiswa;
 use Dompdf\Dompdf;
+use PhpParser\Node\Expr\Cast\String_;
 
 class Laporan extends BaseController {
     private $point = 'laporan';
@@ -47,7 +48,7 @@ class Laporan extends BaseController {
                 'parent'    => $this->point
             ]
         ];
-        return view('laporan/index', $data);
+        return view('laporan/penerima/index', $data);
     }
 
 
@@ -67,11 +68,8 @@ class Laporan extends BaseController {
         return view('/laporan/siswa/index', $data);
     }
 
-    public function cetak() {
-        $tahapModel = new Tahapbeasiswa();
-        $pdf = new Dompdf();
-
-
+    public function cetakPeserta() {
+        $tahapModel     = new Tahapbeasiswa();
         $kriteria       = $this->kriteriaModel->findAll();
         $subkriteria    = $this->subkriteriaModel->findAll();
         $peserta        = $this->pesertaModel->findAllPeserta();
@@ -86,25 +84,26 @@ class Laporan extends BaseController {
             'tahap'        => $this->tahapModel->findAll(),
         ];
 
-        $html = view("/laporan/cetak", $data);
-        $pdf->loadHtml($html);
-        $pdf->setPaper('A4', 'potrait');
-        $pdf->render();
-        return $pdf->stream();
+        $this->cetak($data, "/laporan/penerima/cetak");
     }
 
-    public function cetakLaporanSiswa() {
-        $pdf = new Dompdf();
-
+    public function cetakSiswa() {
         $data = [
-            'title' => 'Laporan Data Siswa tahun 2022',
+            'title' => 'Laporan Data Siswa SMA Negeri 2 Komodo tahun 2022',
             'dataSiswa' => $this->siswaModel->findAll(),
             'url'   => [
                 'parent'    => 'siswa'
             ]
         ];
 
-        $html = view("/laporan/cetakSiswa", $data);
+        $this->cetak($data, "/laporan/siswa/cetak");
+    }
+
+
+    private function cetak(array $data, String $view) {
+        $pdf = new Dompdf(array('DOMPDF_ENABLE_REMOTE' => true));
+
+        $html = view($view, $data);
         $pdf->loadHtml($html);
         $pdf->setPaper('A4', 'potrait');
         $pdf->render();

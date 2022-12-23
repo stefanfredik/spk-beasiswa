@@ -32,6 +32,7 @@
             <span>Data User</span></a>
     </li>
 
+    <hr class="sidebar-divider my-0">
     <li class="nav-item <?= url_is("/siswa")  ? 'active' : ''; ?>">
         <a class="nav-link" href="/siswa">
             <i class="bi bi-people"></i>

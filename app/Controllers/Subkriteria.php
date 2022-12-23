@@ -54,7 +54,7 @@ class Subkriteria extends BaseController {
 
     public function get($id) {
         $data = [
-            'title' => 'Edit Data Penduduk',
+            'title' => 'Edit Data Subkriteria',
             'subkriteria'  => $this->subkriteriaModel->find($id),
             'dataKriteria' => $this->kriteriaModel->findAll(),
             'url'   => $this->url

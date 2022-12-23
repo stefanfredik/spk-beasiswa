@@ -28,7 +28,12 @@
 
                     <div class="mb-3">
                         <label class="form-label">Kelas</label>
-                        <input name="kelas" type="text" class="form-control" required value="<?= $siswa["kelas"]; ?>">
+                        <select class="form-control" name="kelas" id="">
+                            <option value="">Pilih Kelas</option>
+                            <option <?= $siswa['kelas'] == 'X' ? 'selected' : ''; ?> value="X">X</option>
+                            <option <?= $siswa['kelas'] == 'XI' ? 'selected' : ''; ?> value="XI">XI</option>
+                            <option <?= $siswa['kelas'] == 'XII' ? 'selected' : ''; ?> value="XII">XII</option>
+                        </select>
                     </div>
 
                     <div class="mb-3">
