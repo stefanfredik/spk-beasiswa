@@ -75,23 +75,30 @@ foreach ($dataPeserta as $dt) {
                         echo $nilaiAkhir;
                         ?>
                     </td>
-
                     <td>
                         <?php
                         $total = 1;
+                        $jumlahTahap = 0;
 
-                        foreach ($tahap as $th) :
-                            $total += $th['jumlah'];
+                        foreach ($tahap as $th) {
+                            $jumlahTahap += $th['jumlah'];
+                        }
 
-                            if ($rangking <= $total) {
-                                echo $th['tahap'];
-                                break;
+                        // echo $jumlahTahap;
+
+                        if ($rank <= $jumlahTahap) {
+                            foreach ($tahap as $th) {
+                                $total += $th['jumlah'];
+
+                                if ($rank <= $total) {
+                                    echo "<div class='badge bg-primary'>{$th['tahap']}</div>";
+                                    break;
+                                }
                             }
-
-                            // echo "Total : " . $total;
+                        } else {
+                            echo "<div class='badge bg-danger'>Drop Out</div>";
+                        }
                         ?>
-
-                        <?php endforeach; ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
